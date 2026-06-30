@@ -1,9 +1,28 @@
 import TestimonialQuote from "./TestimonialQuote";
 
-// TODO: Marina will supply 3-6 real testimonial quotes separately. Drop them
-// in here as { quote, name? } — the grid renders automatically once this
-// array is non-empty. Until then the stat line alone carries social proof.
-const TESTIMONIALS: { quote: string; name?: string }[] = [];
+// Real alumni quotes (text only — no names or photos, per Marina).
+const TESTIMONIALS: { quote: string; name?: string }[] = [
+  {
+    quote:
+      "No me creo que ya hayamos terminado la formación, se me ha pasado volando, ¡ojalá más y más! La clase de conocer mis dones del alma me encantó. Me cuadra todo y me ha ayudado a confiar en mí y creer que soy capaz… mi tema siempre ha sido la falta de autoestima y veo que estoy mejorando.",
+    name: "Alumna de Soberana",
+  },
+  {
+    quote:
+      "Empecé esta formación porque me sentía consumida, agotada, frustrada y que todo se me hacía cuesta arriba… Quería aprender a encontrar bloqueos y liberarlos, protegerme y sanar algunas creencias. He sentido muy conectada conmigo, he crecido y me siento más cuidada que nunca. Mil gracias.",
+    name: "Alumna de Soberana",
+  },
+  {
+    quote:
+      "Woooow… ¡flipante! Increíble cómo he podido darle sentido a los bloqueos que siempre han estado conmigo y descubrir su origen para aprender por mí misma a liberarlos. Muy enriquecedor. Ha sido un cambio en mí desde la primera clase. Gracias, gracias, gracias, Marina.",
+    name: "Alumna de Soberana",
+  },
+  {
+    quote:
+      "Esta formación ha sido mucho más práctica de lo que pensaba. Lo que más me gustó fue la clase de conectar con los guías y aprender a hacerme sanaciones para desbloquear creencias y miedos que me impedían tener más dinero. He conseguido cambiar de trabajo y tener mi propia casa. Todavía estoy alucinando.",
+    name: "Alumna de Soberana",
+  },
+];
 
 export default function TestimonialStat() {
   return (

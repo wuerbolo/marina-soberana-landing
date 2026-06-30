@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 /*
-  Soberana — public landing page. Marina's own brand palette: warm rose
-  canvas, deep plum text, a rose/magenta accent.
-  PLACEHOLDER VALUES: sampled visually isn't possible in this environment;
-  swap these for the real brand hex codes when available — every component
-  reads only the variables below, so this is a one-block change.
+  Soberana — public landing page. Marina's own brand palette: pale lavender
+  canvas, deep indigo text, a periwinkle accent.
+  Eyeballed from Marina's reference screenshots (the PDF cover + welcome
+  page) — close, but not exact hex codes. She'll send the real values later;
+  swapping them is a one-block edit, since every component reads only the
+  variables below.
   Shares the learning platform's typographic DNA (serif display + clean sans
   body, generous whitespace) so the two feel like the same family with a
   different palette.
 */
 :root {
-  --background: #fdf6f2;
+  --background: #ece6f2;
   --surface: #ffffff;
-  --foreground: #3a1f2b;
-  --muted: #8d6f78;
-  --line: #ecd9dd;
-  --accent: #b8456b;
-  --accent-hover: #9c3a5a;
+  --foreground: #2a2545;
+  --muted: #9991b8;
+  --line: #ded5ec;
+  --accent: #7468b0;
+  --accent-hover: #5e5394;
 }
 
 @theme inline {
