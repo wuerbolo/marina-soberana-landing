@@ -1,0 +1,26 @@
+# Development: hot-reloading Next.js dev server in a container.
+#   docker compose up --build
+# Source is bind-mounted, so edits on the host reload live. node_modules and
+# .next are kept inside the container (anonymous volumes) so the image's
+# Linux-built deps aren't shadowed by the host.
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    image: soberana-landing:dev
+    container_name: soberana-landing-dev
+    environment:
+      # Read by the browser (client-side fetch) -> the shared backend.
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      # Fallback file-watching for bind mounts, in case native inotify misses.
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      # The learning app already uses :3300, so the landing page is :3400.
+      - "3400:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped

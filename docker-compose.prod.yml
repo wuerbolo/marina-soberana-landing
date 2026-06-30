@@ -1,0 +1,18 @@
+# Production: standalone build served by `node server.js`.
+#   docker compose -f docker-compose.prod.yml up --build
+# NEXT_PUBLIC_API_URL is baked into the client bundle at BUILD time, so it is
+# passed as a build arg (not just a runtime env var).
+services:
+  web:
+    build:
+      context: .
+      target: runner
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    image: soberana-landing:prod
+    container_name: soberana-landing-prod
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3400:3000"
+    restart: unless-stopped

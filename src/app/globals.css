@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/*
+  Soberana — public landing page. Marina's own brand palette: warm rose
+  canvas, deep plum text, a rose/magenta accent.
+  PLACEHOLDER VALUES: sampled visually isn't possible in this environment;
+  swap these for the real brand hex codes when available — every component
+  reads only the variables below, so this is a one-block change.
+  Shares the learning platform's typographic DNA (serif display + clean sans
+  body, generous whitespace) so the two feel like the same family with a
+  different palette.
+*/
+:root {
+  --background: #fdf6f2;
+  --surface: #ffffff;
+  --foreground: #3a1f2b;
+  --muted: #8d6f78;
+  --line: #ecd9dd;
+  --accent: #b8456b;
+  --accent-hover: #9c3a5a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.4s ease-out;
+}
