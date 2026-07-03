@@ -8,11 +8,21 @@ services:
       context: .
       target: runner
       args:
-        NEXT_PUBLIC_API_URL: http://localhost:8000
+        NEXT_PUBLIC_API_URL: https://api.escuelasoberana.com
     image: soberana-landing:prod
     container_name: soberana-landing-prod
     environment:
       - NODE_ENV=production
-    ports:
-      - "3400:3000"
+    networks:
+      - web
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.landing.rule=Host(`escuelasoberana.com`) || Host(`www.escuelasoberana.com`)
+      - traefik.http.routers.landing.entrypoints=websecure
+      - traefik.http.routers.landing.tls.certresolver=le
+      - traefik.http.services.landing.loadbalancer.server.port=3000
     restart: unless-stopped
+
+networks:
+  web:
+    external: true
