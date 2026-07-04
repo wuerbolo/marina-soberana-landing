@@ -8,10 +8,20 @@
   Shares the learning platform's typographic DNA (serif display + clean sans
   body, generous whitespace) so the two feel like the same family with a
   different palette.
+
+  Two light adjustments on top of the raw brand values (2026-07-04):
+  - --surface: pure white read as too clinical/stark against the cool lilac
+    background and warm accent, so it's now a soft cream that bridges the
+    two. This is OUR best-guess placeholder, not sourced from the brand
+    book — swap it for Marina's real "crema" hex if she has one on file.
+  - CTA buttons now use --foreground (not white) as the text color on top
+    of --accent: white-on-Melocotón was ~2.1:1 contrast (fails WCAG AA,
+    genuinely hard to read); dark violet ink on the same peach is ~5.2:1.
+    The accent hex itself is untouched.
 */
 :root {
   --background: #d8d5e3; /* Lila Nebulosa */
-  --surface: #ffffff;
+  --surface: #f7f1e6; /* Crema (placeholder — confirm against brand book) */
   --foreground: #403f56; /* Violeta Eclipse */
   --muted: #8d8ab9; /* Lavanda */
   --line: #b6b4d9; /* Lila Grisáceo */

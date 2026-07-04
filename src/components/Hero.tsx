@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="mt-12">
           <Link
             href="/aplicar"
-            className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-white transition-colors hover:bg-accent-hover"
+            className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
           >
             Quiero saber si es para mí
           </Link>
