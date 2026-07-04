@@ -30,6 +30,11 @@ FROM base AS builder
 # NEXT_PUBLIC_* vars are inlined into the client bundle at build time.
 ARG NEXT_PUBLIC_API_URL=http://localhost:8000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+# Sentry source-map upload at build time. Empty (default) skips the upload
+# with a warning — builds never fail for lack of a token. Builder-stage only:
+# the token never reaches the runner image.
+ARG SENTRY_AUTH_TOKEN=
+ENV SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN
 ENV NODE_ENV=production
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
