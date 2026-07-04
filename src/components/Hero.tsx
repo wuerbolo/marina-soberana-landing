@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="border-b border-line">
       <div className="mx-auto max-w-3xl px-6 py-24 text-center md:py-32">
-        <p className="text-xs uppercase tracking-[0.35em] text-accent">
+        <p className="text-xs uppercase tracking-[0.35em] text-foreground">
           Proceso de evolución, sanación y manifestación
         </p>
         <h1 className="mt-5 font-serif text-5xl font-light tracking-tight md:text-7xl">

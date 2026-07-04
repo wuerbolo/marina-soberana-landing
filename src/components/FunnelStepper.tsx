@@ -72,13 +72,13 @@ export default function FunnelStepper() {
         <div className="mt-10 flex gap-4">
           <button
             onClick={() => answer(true)}
-            className="flex-1 rounded-xl border border-line bg-surface py-4 text-sm uppercase tracking-widest transition-colors hover:border-accent hover:text-accent"
+            className="flex-1 rounded-xl border border-line bg-surface py-4 text-sm uppercase tracking-widest transition-colors hover:border-accent hover:text-foreground"
           >
             Sí
           </button>
           <button
             onClick={() => answer(false)}
-            className="flex-1 rounded-xl border border-line bg-surface py-4 text-sm uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-accent"
+            className="flex-1 rounded-xl border border-line bg-surface py-4 text-sm uppercase tracking-widest text-muted transition-colors hover:border-accent hover:text-foreground"
           >
             No
           </button>
@@ -98,7 +98,7 @@ export default function FunnelStepper() {
   if (stage === "result-qualified") {
     return (
       <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent">Resultado</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-foreground">Resultado</p>
         <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
           Por lo que cuentas, Soberana puede ser para ti.
         </h2>
@@ -119,7 +119,7 @@ export default function FunnelStepper() {
   if (stage === "result-unqualified") {
     return (
       <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent">Resultado</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-foreground">Resultado</p>
         <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
           Por ahora, Soberana no parece el paso adecuado para ti.
         </h2>
@@ -281,7 +281,7 @@ function ContactForm({
         )}
       </div>
 
-      {error && <p className="mt-5 text-sm text-accent">{error}</p>}
+      {error && <p className="mt-5 text-sm text-foreground">{error}</p>}
 
       <button
         type="submit"

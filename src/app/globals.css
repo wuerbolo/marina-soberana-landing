@@ -1,31 +1,43 @@
 @import "tailwindcss";
 
 /*
-  Soberana — public landing page. Marina's real brand palette (final hex
-  values, from her brand book): Lila Nebulosa / Lila Grisáceo / Lavanda /
-  Violeta Eclipse for the cool lilac identity, Melocotón as the one warm
-  accent for CTAs.
-  Shares the learning platform's typographic DNA (serif display + clean sans
-  body, generous whitespace) so the two feel like the same family with a
-  different palette.
+  Soberana — public landing page.
 
-  Two light adjustments on top of the raw brand values (2026-07-04):
-  - --surface: pure white read as too clinical/stark against the cool lilac
-    background and warm accent, so it's now a soft cream that bridges the
-    two. This is OUR best-guess placeholder, not sourced from the brand
-    book — swap it for Marina's real "crema" hex if she has one on file.
-  - CTA buttons now use --foreground (not white) as the text color on top
-    of --accent: white-on-Melocotón was ~2.1:1 contrast (fails WCAG AA,
-    genuinely hard to read); dark violet ink on the same peach is ~5.2:1.
-    The accent hex itself is untouched.
+  ── OFFICIAL: Marina's brand palette (do not tweak these values) ─────────
+  Lila Nebulosa   #D8D5E3
+  Lila Grisáceo   #B6B4D9
+  Lavanda         #8D8AB9
+  Violeta Eclipse #403F56
+  Melocotón       #F5A062
+  Arena Suave     #EDE6DD
+  Source: Marina's brand book, confirmed 2026-07-05. If this list ever
+  disagrees with the variables below, this list wins — paste the update
+  here first if the brand changes, then adjust the variables.
+  Duplicated by hand in marina-soberana-frontend/src/app/globals.css too
+  (no shared package between repos).
+
+  Shares the learning platform's typographic DNA (serif display + clean sans
+  body, generous whitespace) so the two feel like the same family.
+
+  How the 6 colors are used (decided 2026-07-05, see commit):
+  - Melocotón is TOO LIGHT to use as legible text on any background in this
+    palette (~1.4–2.1:1 contrast on all three light backgrounds, well under
+    the WCAG AA minimum of 4.5:1). Used only as a solid fill (bg-accent,
+    with dark text on top) or a decorative border/detail — never as text
+    color (no `text-accent`).
+  - Arena Suave replaces pure white as --surface: pure white read as too
+    clinical next to the cool lilac and the warm peach accent.
+  - Violeta Eclipse (--foreground) is the only text ink: ~7.5:1 on lilac,
+    ~5.2:1 on Arena Suave and on Melocotón — works on every background in
+    the palette.
 */
 :root {
   --background: #d8d5e3; /* Lila Nebulosa */
-  --surface: #f7f1e6; /* Crema (placeholder — confirm against brand book) */
+  --surface: #ede6dd; /* Arena Suave */
   --foreground: #403f56; /* Violeta Eclipse */
   --muted: #8d8ab9; /* Lavanda */
   --line: #b6b4d9; /* Lila Grisáceo */
-  --accent: #f5a062; /* Melocotón */
+  --accent: #f5a062; /* Melocotón — fill/border only, never text */
   --accent-hover: #dd8a4d; /* Melocotón, darkened */
 }
 

@@ -25,7 +25,7 @@ export default function ProgramStructure() {
   return (
     <section className="border-b border-line">
       <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-accent">¿Cómo es Soberana?</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-foreground">¿Cómo es Soberana?</p>
         <h2 className="mt-3 font-serif text-3xl font-light tracking-tight md:text-4xl">
           Un acompañamiento completo de 6 meses
         </h2>

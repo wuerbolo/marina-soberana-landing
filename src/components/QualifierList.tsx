@@ -22,7 +22,7 @@ export default function QualifierList() {
         <ul className="mt-10 space-y-4">
           {ITEMS.map((item) => (
             <li key={item} className="flex items-start gap-3 text-base leading-relaxed">
-              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-foreground">
                 <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

@@ -10,6 +10,9 @@ context and deployment model.
 2. Unqualified visitors → capture email for Marina's newsletter (nurture path).
 Judge every change against these two.
 
+## Language
+- Code, comments, docstrings, and commit messages: English only, even when the conversation happens in Spanish. (Full rule + exceptions in the parent/home-directory CLAUDE.md.) Exception: user-facing copy on the page itself stays in Spanish — that's product content, not docs.
+
 ## Conventions
 - Qualification logic lives server-side: questions from `GET /leads/questions`, scoring via `POST /leads/qualify`. This repo only renders — never hardcode questions or scoring here.
 - Brand palette: CSS variables in `src/app/globals.css` are the single source of truth — never hardcode a color in a component. Copy tone: Spanish, empathetic, clarity above cleverness (sourced from Marina's own sales material).
