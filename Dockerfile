@@ -30,6 +30,10 @@ FROM base AS builder
 # NEXT_PUBLIC_* vars are inlined into the client bundle at build time.
 ARG NEXT_PUBLIC_API_URL=http://localhost:8000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+# Cloudflare Web Analytics beacon token. Not a secret (it's a public client-side
+# beacon id), but kept as a build arg so it's not hardcoded in source.
+ARG NEXT_PUBLIC_CF_BEACON_TOKEN=
+ENV NEXT_PUBLIC_CF_BEACON_TOKEN=$NEXT_PUBLIC_CF_BEACON_TOKEN
 # Sentry source-map upload at build time. Empty (default) skips the upload
 # with a warning — builds never fail for lack of a token. Builder-stage only:
 # the token never reaches the runner image.

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+// Cookie-free, GDPR-exempt pageview analytics (see infra CLAUDE.md / Trello for
+// why: no consent banner needed since it sets no cookies and stores no PII).
+const CF_BEACON_TOKEN = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,7 +32,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {children}
+        {CF_BEACON_TOKEN && (
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${CF_BEACON_TOKEN}"}`}
+          />
+        )}
+      </body>
     </html>
   );
 }

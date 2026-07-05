@@ -11,6 +11,8 @@ services:
         NEXT_PUBLIC_API_URL: https://api.escuelasoberana.com
         # From the gitignored .env next to this file (see .env.sentry-build-plugin).
         SENTRY_AUTH_TOKEN: ${SENTRY_AUTH_TOKEN:-}
+        # Cloudflare Web Analytics beacon token (from the .env next to this file).
+        NEXT_PUBLIC_CF_BEACON_TOKEN: ${NEXT_PUBLIC_CF_BEACON_TOKEN:-}
     image: soberana-landing:prod
     container_name: soberana-landing-prod
     environment:
