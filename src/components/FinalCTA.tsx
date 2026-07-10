@@ -22,7 +22,7 @@ export default function FinalCTA() {
         </div>
       </div>
       <footer className="border-t border-line px-6 py-8 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Marina Romás · Soberana
+        © {new Date().getFullYear()} Marina Romés · Soberana
       </footer>
     </section>
   );

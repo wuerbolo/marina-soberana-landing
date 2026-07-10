@@ -56,11 +56,6 @@ export default function CookiesPage() {
             necesario para poder darte acceso a tu contenido y no requiere consentimiento.
           </p>
         </section>
-
-        <p className="text-xs text-muted">
-          Este texto es un borrador razonable, no asesoría legal. Está pendiente de revisión
-          por Marina o por un profesional legal.
-        </p>
       </div>
     </main>
   );

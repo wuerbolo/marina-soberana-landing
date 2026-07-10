@@ -25,7 +25,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: "Soberana | Proceso de evolución, sanación y manifestación",
   description:
-    "Rompe y libera miedos, lealtades familiares y heridas del alma para avanzar con claridad, confianza y merecimiento. Un acompañamiento de 6 meses con Marina Romás.",
+    "Rompe y libera miedos, lealtades familiares y heridas del alma para avanzar con claridad, confianza y merecimiento. Un acompañamiento de 6 meses con Marina Romés.",
 };
 
 export default function RootLayout({
