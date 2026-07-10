@@ -290,6 +290,13 @@ function ContactForm({
       >
         {busy ? "Enviando…" : qualified ? "Solicitar mi llamada" : "Avisarme"}
       </button>
+      <p className="mt-4 text-xs leading-relaxed text-muted">
+        Al enviar aceptas nuestra{" "}
+        <Link href="/privacidad" className="underline hover:text-foreground">
+          política de privacidad
+        </Link>
+        .
+      </p>
     </form>
   );
 }

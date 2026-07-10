@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 // Cookie-free, GDPR-exempt pageview analytics (see infra CLAUDE.md / Trello for
@@ -33,7 +36,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="min-h-full">
+        <SiteHeader />
         {children}
+        <SiteFooter />
+        <CookieConsent />
         {CF_BEACON_TOKEN && (
           <Script
             defer
