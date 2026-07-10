@@ -53,11 +53,31 @@ export default function TerminosPage() {
 
         <section>
           <h2 className="font-serif text-xl text-foreground">Política de reembolsos</h2>
-          <p className="mt-2">
-            Fuera del derecho de desistimiento legal descrito arriba, no se realizan
-            reembolsos una vez iniciado el acceso al programa, salvo que se acuerde algo
-            distinto de forma expresa y por escrito con Marina.
-          </p>
+          <ul className="mt-2 list-disc space-y-2 pl-5">
+            <li>
+              Si no has empezado a acceder al contenido, reembolso completo dentro de los 14
+              días naturales desde la matrícula.
+            </li>
+            <li>
+              Si ya has empezado a acceder al contenido con tu consentimiento expreso (ver
+              "Derecho de desistimiento" arriba), no hay reembolso de esa parte, aunque no
+              hayas asistido a las clases en directo correspondientes.
+            </li>
+            <li>
+              Pasado el plazo de 14 días, no se realizan reembolsos, salvo que se acuerde algo
+              distinto de forma expresa y por escrito con Marina.
+            </li>
+            <li>
+              Si es Marina quien decide interrumpir el programa antes de su finalización por
+              causas no imputables a la alumna, se reembolsará la parte proporcional del
+              contenido pendiente.
+            </li>
+            <li>
+              Si tu matrícula se paga a plazos, el impago de una cuota no da derecho a
+              reembolso de las cuotas ya abonadas; para dejar de pagar cuotas futuras,
+              avísanos con al menos 30 días de antelación.
+            </li>
+          </ul>
         </section>
 
         <section>

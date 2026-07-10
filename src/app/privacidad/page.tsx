@@ -14,9 +14,12 @@ export default function PrivacidadPage() {
         <section>
           <h2 className="font-serif text-xl text-foreground">Responsable del tratamiento</h2>
           <p className="mt-2">
-            Marina Romés, titular del proyecto Soberana (escuelasoberana.com /
-            app.escuelasoberana.com). Para cualquier consulta sobre tus datos puedes
-            escribir a{" "}
+            Marina Romero Mieres, titular del proyecto Soberana (escuelasoberana.com /
+            app.escuelasoberana.com) — identificación completa en el{" "}
+            <a href="/aviso-legal" className="underline hover:text-foreground">
+              aviso legal
+            </a>
+            . Para cualquier consulta sobre tus datos puedes escribir a{" "}
             <a href="mailto:info@marinaromes.com" className="underline hover:text-foreground">
               info@marinaromes.com
             </a>
