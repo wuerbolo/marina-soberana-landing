@@ -26,12 +26,12 @@ const TESTIMONIALS: { quote: string; name?: string }[] = [
 
 export default function TestimonialStat() {
   return (
-    <section className="border-b border-line">
+    <section className="bg-dark text-on-dark">
       <div className="mx-auto max-w-4xl px-6 py-20 text-center md:py-28">
-        <p className="font-serif text-4xl font-light tracking-tight md:text-5xl">
+        <p className="font-serif text-6xl font-light tracking-tight text-accent md:text-7xl">
           +60
         </p>
-        <p className="mt-3 text-base text-muted">
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-on-dark-muted">
           mujeres han vivido transformaciones espectaculares que cambiaron su vida
           personal, familiar y profesional.
         </p>

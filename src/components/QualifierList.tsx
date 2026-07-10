@@ -13,7 +13,7 @@ const ITEMS = [
 
 export default function QualifierList() {
   return (
-    <section className="border-b border-line">
+    <section>
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <h2 className="font-serif text-3xl font-light tracking-tight md:text-4xl">
           Soberana es para ti si…
@@ -22,7 +22,7 @@ export default function QualifierList() {
         <ul className="mt-10 space-y-4">
           {ITEMS.map((item) => (
             <li key={item} className="flex items-start gap-3 text-base leading-relaxed">
-              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent/10 text-foreground">
+              <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-foreground">
                 <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3">
                   <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -35,7 +35,7 @@ export default function QualifierList() {
         <div className="mt-12 text-center">
           <Link
             href="/aplicar"
-            className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
+            className="inline-flex rounded-full bg-accent px-9 py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
           >
             Quiero saber si es para mí
           </Link>

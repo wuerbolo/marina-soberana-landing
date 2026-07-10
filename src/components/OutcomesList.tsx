@@ -12,7 +12,7 @@ const ITEMS = [
 
 export default function OutcomesList() {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-panel">
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <h2 className="font-serif text-3xl font-light tracking-tight md:text-4xl">
           ¿Qué vas a lograr?

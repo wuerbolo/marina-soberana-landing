@@ -1,6 +1,6 @@
 export default function SiteHeader() {
   return (
-    <div className="border-b border-line">
+    <div className="bg-panel">
       <div className="mx-auto flex max-w-3xl justify-end px-6 py-3">
         <a
           href="https://app.escuelasoberana.com/login"

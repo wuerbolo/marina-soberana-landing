@@ -19,38 +19,74 @@
   Shares the learning platform's typographic DNA (serif display + clean sans
   body, generous whitespace) so the two feel like the same family.
 
-  How the 6 colors are used (decided 2026-07-05, see commit):
-  - Melocotón is TOO LIGHT to use as legible text on any background in this
-    palette (~1.4–2.1:1 contrast on all three light backgrounds, well under
-    the WCAG AA minimum of 4.5:1). Used only as a solid fill (bg-accent,
-    with dark text on top) or a decorative border/detail — never as text
-    color (no `text-accent`).
-  - Arena Suave replaces pure white as --surface: pure white read as too
-    clinical next to the cool lilac and the warm peach accent.
-  - Violeta Eclipse (--foreground) is the only text ink: ~7.5:1 on lilac,
-    ~5.2:1 on Arena Suave and on Melocotón — works on every background in
-    the palette.
+  How the palette maps to roles (reworked 2026-07-10, contrast-checked):
+  - 60/30/10: Arena Suave is the page base (warm), Lila Nebulosa is the
+    alternate section panel (brand), Melocotón is reserved for CTAs and
+    small accents. A warm base is what makes the peach CTA harmonize —
+    on the cool lilac it clashed.
+  - Melocotón is TOO LIGHT for text on light backgrounds (max ~2.1:1).
+    Fill/border/detail only there. On Violeta Eclipse it reaches 4.9:1,
+    so on the dark section it may be used as (large) display text.
+  - Lavanda (#8D8AB9) FAILS as body text on every light background
+    (2.2–2.6:1). It is decorative-only (--soft). Muted TEXT uses
+    --muted (#5C5987), a DERIVED shade: Lavanda darkened toward Violeta
+    Eclipse. 5.25:1 on Arena, 4.5:1 on Lila Nebulosa — both AA.
+  - Violeta Eclipse doubles as the dark section background (testimonials):
+    Arena text on it is 8.2:1, Lila Grisáceo 5.1:1 (on-dark muted),
+    cards use --dark-raised (#4D4B68, derived: Violeta lightened).
+  - --surface (#F6F1EA, derived: Arena lightened) is for raised cards on
+    light sections; Violeta text on it is 9.1:1.
 */
 :root {
-  --background: #d8d5e3; /* Lila Nebulosa */
-  --surface: #ede6dd; /* Arena Suave */
-  --foreground: #403f56; /* Violeta Eclipse */
-  --muted: #8d8ab9; /* Lavanda */
-  --line: #b6b4d9; /* Lila Grisáceo */
-  --accent: #f5a062; /* Melocotón — fill/border only, never text */
-  --accent-hover: #dd8a4d; /* Melocotón, darkened */
+  /* Official colors, verbatim */
+  --lila-nebulosa: #d8d5e3;
+  --lila-grisaceo: #b6b4d9;
+  --lavanda: #8d8ab9;
+  --violeta-eclipse: #403f56;
+  --melocoton: #f5a062;
+  --arena-suave: #ede6dd;
+
+  /* Derived shades (documented above — keep this list short) */
+  --melocoton-deep: #dd8a4d; /* Melocotón darkened, hover */
+  --lavanda-ink: #5c5987; /* Lavanda → Violeta, legible muted text */
+  --arena-bright: #f6f1ea; /* Arena lightened, raised cards */
+  --violeta-raised: #4d4b68; /* Violeta lightened, cards on dark */
+
+  /* Semantic roles (components must only use these, via Tailwind tokens) */
+  --background: var(--arena-suave);
+  --surface: var(--arena-bright);
+  --panel: var(--lila-nebulosa);
+  --foreground: var(--violeta-eclipse);
+  --muted: var(--lavanda-ink);
+  --soft: var(--lavanda);
+  --line: var(--lila-grisaceo);
+  --accent: var(--melocoton);
+  --accent-hover: var(--melocoton-deep);
+  --dark: var(--violeta-eclipse);
+  --dark-raised: var(--violeta-raised);
+  --on-dark: var(--arena-suave);
+  --on-dark-muted: var(--lila-grisaceo);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-panel: var(--panel);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-soft: var(--soft);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-dark: var(--dark);
+  --color-dark-raised: var(--dark-raised);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  /* Violet-tinted soft shadow for raised cards (shadow-card utility) */
+  --shadow-card: 0 10px 30px -14px rgb(64 63 86 / 0.25);
+  --shadow-cta: 0 12px 28px -10px rgb(221 138 77 / 0.55);
 }
 
 body {

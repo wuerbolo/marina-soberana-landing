@@ -7,7 +7,7 @@ const POINTS = [
 
 export default function ReadySection() {
   return (
-    <section className="border-b border-line bg-surface">
+    <section className="bg-panel">
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <p className="font-serif text-3xl font-light leading-snug">
           No necesitas experiencia para unirte a Soberana.
@@ -26,7 +26,7 @@ export default function ReadySection() {
           ))}
         </ul>
 
-        <p className="mt-10 rounded-2xl border border-line bg-background px-6 py-5 text-base leading-relaxed">
+        <p className="mt-10 rounded-2xl border-l-4 border-accent bg-surface px-6 py-5 text-base leading-relaxed shadow-card">
           <strong className="font-medium">Más de 60 mujeres</strong> han vivido
           transformaciones espectaculares que cambiaron su vida personal, familiar y
           profesional. Sus historias te inspirarán y te mostrarán lo que es posible.

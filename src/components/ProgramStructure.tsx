@@ -23,16 +23,16 @@ const ITEMS = [
 
 export default function ProgramStructure() {
   return (
-    <section className="border-b border-line">
+    <section>
       <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-foreground">¿Cómo es Soberana?</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-muted">¿Cómo es Soberana?</p>
         <h2 className="mt-3 font-serif text-3xl font-light tracking-tight md:text-4xl">
           Un acompañamiento completo de 6 meses
         </h2>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {ITEMS.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-line bg-surface p-6">
+            <div key={item.title} className="rounded-2xl bg-surface p-6 shadow-card">
               <p className="font-serif text-xl font-light">{item.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
             </div>

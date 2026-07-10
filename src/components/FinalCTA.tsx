@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-surface">
+    <section>
       <div className="mx-auto max-w-2xl px-6 py-24 text-center md:py-32">
         <h2 className="font-serif text-3xl font-light tracking-tight md:text-4xl">
           Tu siguiente paso
@@ -15,15 +15,15 @@ export default function FinalCTA() {
         <div className="mt-10">
           <Link
             href="/aplicar"
-            className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
+            className="inline-flex rounded-full bg-accent px-9 py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
           >
             Quiero saber si es para mí
           </Link>
+          <p className="mt-4 text-xs uppercase tracking-widest text-muted">
+            3 minutos · sin compromiso
+          </p>
         </div>
       </div>
-      <footer className="border-t border-line px-6 py-8 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Marina Romés · Soberana
-      </footer>
     </section>
   );
 }

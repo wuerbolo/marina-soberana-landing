@@ -14,7 +14,7 @@ const PARA_TI = [
 
 export default function ProblemSection() {
   return (
-    <section className="border-b border-line">
+    <section>
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
         <div className="space-y-5">
           {EMPATHY.map((p) => (
