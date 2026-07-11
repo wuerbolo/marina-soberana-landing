@@ -10,6 +10,11 @@ import "./globals.css";
 // why: no consent banner needed since it sets no cookies and stores no PII).
 const CF_BEACON_TOKEN = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
+// Self-hosted Umami (umami.marinaromes.com): CTA click events, comparable
+// across future sales landing pages. Cookieless by default (no persistent
+// client-side id), same no-consent-needed reasoning as the Cloudflare beacon.
+const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -45,6 +50,13 @@ export default function RootLayout({
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"
             data-cf-beacon={`{"token": "${CF_BEACON_TOKEN}"}`}
+          />
+        )}
+        {UMAMI_WEBSITE_ID && (
+          <Script
+            defer
+            src="https://umami.marinaromes.com/script.js"
+            data-website-id={UMAMI_WEBSITE_ID}
           />
         )}
       </body>

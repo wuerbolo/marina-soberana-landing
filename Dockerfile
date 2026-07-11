@@ -34,6 +34,10 @@ ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 # beacon id), but kept as a build arg so it's not hardcoded in source.
 ARG NEXT_PUBLIC_CF_BEACON_TOKEN=
 ENV NEXT_PUBLIC_CF_BEACON_TOKEN=$NEXT_PUBLIC_CF_BEACON_TOKEN
+# Umami (self-hosted, umami.marinaromes.com) website id. Also not a secret —
+# same reasoning as the Cloudflare token above.
+ARG NEXT_PUBLIC_UMAMI_WEBSITE_ID=
+ENV NEXT_PUBLIC_UMAMI_WEBSITE_ID=$NEXT_PUBLIC_UMAMI_WEBSITE_ID
 # Sentry source-map upload at build time. Empty (default) skips the upload
 # with a warning — builds never fail for lack of a token. Builder-stage only:
 # the token never reaches the runner image.

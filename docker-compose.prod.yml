@@ -13,6 +13,8 @@ services:
         SENTRY_AUTH_TOKEN: ${SENTRY_AUTH_TOKEN:-}
         # Cloudflare Web Analytics beacon token (from the .env next to this file).
         NEXT_PUBLIC_CF_BEACON_TOKEN: ${NEXT_PUBLIC_CF_BEACON_TOKEN:-}
+        # Umami website id (from the .env next to this file).
+        NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${NEXT_PUBLIC_UMAMI_WEBSITE_ID:-}
     image: soberana-landing:prod
     container_name: soberana-landing-prod
     environment:
