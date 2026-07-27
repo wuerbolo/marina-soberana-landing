@@ -27,7 +27,7 @@ Judge every change against these two.
 
 ### Issue tracker
 
-Issues live on the shared "Soberana" Trello board (https://trello.com/b/GvafiE7f), split into `From business` (PO-provided) and `App (internal created)` (self-found) lists — not per-repo GitHub Issues. See `docs/agents/issue-tracker.md`.
+Issues live on the shared "Soberana" Trello board (https://trello.com/b/GvafiE7f) — not per-repo GitHub Issues. Lists are workflow position (`Inbox` → `Next` → `In Progress` → `Done`); provenance is the `from-business` / `internal` label pair. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
