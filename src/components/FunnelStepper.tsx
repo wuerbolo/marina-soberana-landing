@@ -108,6 +108,7 @@ export default function FunnelStepper() {
         </p>
         <button
           onClick={() => setStage("contact-form")}
+          data-umami-event="cta-qualified-continue"
           className="mt-10 inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
         >
           Continuar
@@ -131,6 +132,7 @@ export default function FunnelStepper() {
         <div className="mt-10 flex flex-col items-center gap-3">
           <button
             onClick={() => setStage("nurture-form")}
+            data-umami-event="cta-nurture-signup"
             className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
           >
             Avísame en el futuro
@@ -286,6 +288,7 @@ function ContactForm({
       <button
         type="submit"
         disabled={busy}
+        data-umami-event={qualified ? "cta-submit-qualified" : "cta-submit-nurture"}
         className="mt-10 w-full rounded-full bg-accent py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover disabled:opacity-50"
       >
         {busy ? "Enviando…" : qualified ? "Solicitar mi llamada" : "Avisarme"}

@@ -15,6 +15,7 @@ export default function FinalCTA() {
         <div className="mt-10">
           <Link
             href="/aplicar"
+            data-umami-event="cta-final-click"
             className="inline-flex rounded-full bg-accent px-9 py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
           >
             Quiero saber si es para mí
