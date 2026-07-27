@@ -22,3 +22,18 @@ Judge every change against these two.
 ## Develop & deploy
 - This repo may be iterated directly on the VPS (Claude Code + tmux): edit → `./deploy.sh` → check https://escuelasoberana.com. Low blast radius (no state here — leads live in the backend), but commit and push to GitHub as you go; that's the only backup.
 - Local dev: `docker compose up -d` (:3400) against the backend dev stack.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live on the shared "Soberana" Trello board (https://trello.com/b/GvafiE7f), split into `From business` (PO-provided) and `App (internal created)` (self-found) lists — not per-repo GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical triage roles map 1:1 to identically-named Trello labels (`bug`, `enhancement`, `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
