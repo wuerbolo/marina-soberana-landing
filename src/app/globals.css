@@ -5,67 +5,67 @@
 
   ── OFFICIAL: Marina's brand palette (do not tweak these values) ─────────
   Lila Nebulosa   #D8D5E3
-  Lila Grisáceo   #B6B4D9
-  Lavanda         #8D8AB9
-  Violeta Eclipse #403F56
-  Melocotón       #F5A062
-  Arena Suave     #EDE6DD
-  Source: Marina's brand book, confirmed 2026-07-05. If this list ever
-  disagrees with the variables below, this list wins — paste the update
-  here first if the brand changes, then adjust the variables.
+  Morado          #4A2F5E
+  Morado Oscuro   #2E1C3D
+  Dorado          #C8A24A
+  Dorado Claro    #E8D5A3
+  Crema           #FAF6F0
+  Source: purple/gold concept Marina provided (soberana-landing-concept-
+  from-marina/soberana-landing.html), confirmed 2026-08-04 — supersedes the
+  earlier lilac/peach palette. If this list ever disagrees with the
+  variables below, this list wins — paste the update here first if the
+  brand changes, then adjust the variables.
   Duplicated by hand in marina-soberana-frontend/src/app/globals.css too
   (no shared package between repos).
 
   Shares the learning platform's typographic DNA (serif display + clean sans
   body, generous whitespace) so the two feel like the same family.
 
-  How the palette maps to roles (reworked 2026-07-10, contrast-checked):
-  - 60/30/10: Arena Suave is the page base (warm), Lila Nebulosa is the
-    alternate section panel (brand), Melocotón is reserved for CTAs and
-    small accents. A warm base is what makes the peach CTA harmonize —
-    on the cool lilac it clashed.
-  - Melocotón is TOO LIGHT for text on light backgrounds (max ~2.1:1).
-    Fill/border/detail only there. On Violeta Eclipse it reaches 4.9:1,
-    so on the dark section it may be used as (large) display text.
-  - Lavanda (#8D8AB9) FAILS as body text on every light background
-    (2.2–2.6:1). It is decorative-only (--soft). Muted TEXT uses
-    --muted (#5C5987), a DERIVED shade: Lavanda darkened toward Violeta
-    Eclipse. 5.25:1 on Arena, 4.5:1 on Lila Nebulosa — both AA.
-  - Violeta Eclipse doubles as the dark section background (testimonials):
-    Arena text on it is 8.2:1, Lila Grisáceo 5.1:1 (on-dark muted),
-    cards use --dark-raised (#4D4B68, derived: Violeta lightened).
-  - --surface (#F6F1EA, derived: Arena lightened) is for raised cards on
-    light sections; Violeta text on it is 9.1:1.
+  How the palette maps to roles (reworked 2026-08-04, contrast-checked):
+  - 60/30/10: Crema is the page base (warm off-white), Lila Nebulosa is the
+    alternate section panel (brand, unchanged from the prior palette),
+    Dorado is reserved for CTAs and small accents.
+  - Dorado (#C8A24A) on Crema/white passes for large accent numbers but is
+    borrowed as a CTA fill, not body text — foreground text on top of it
+    still reaches 6.46:1 (AA).
+  - Muted TEXT uses --muted (#5C4A6B), a DERIVED shade between Morado and
+    Crema: 7.37:1 on Crema, 5.50:1 on Lila Nebulosa — both AA.
+  - Morado Oscuro doubles as the dark section background (testimonials):
+    Crema text on it is 14.45:1, the derived on-dark-muted lilac
+    (#F0E6F7) is 12.87:1; cards use --dark-raised (Morado, #4A2F5E),
+    where those same text colors stay 10.49:1 / 9.34:1.
+  - --surface is plain white, matching the concept's raised cards on
+    light sections; Morado Oscuro text on it is 15.56:1.
 */
 :root {
   /* Official colors, verbatim */
   --lila-nebulosa: #d8d5e3;
-  --lila-grisaceo: #b6b4d9;
-  --lavanda: #8d8ab9;
-  --violeta-eclipse: #403f56;
-  --melocoton: #f5a062;
-  --arena-suave: #ede6dd;
+  --morado: #4a2f5e;
+  --morado-oscuro: #2e1c3d;
+  --dorado: #c8a24a;
+  --dorado-claro: #e8d5a3; /* reserved: not yet wired to a role — no current component needs a gold accent-on-dark label (the concept uses it for eyebrows/badges/credential numbers) */
+  --crema: #faf6f0;
 
   /* Derived shades (documented above — keep this list short) */
-  --melocoton-deep: #dd8a4d; /* Melocotón darkened, hover */
-  --lavanda-ink: #5c5987; /* Lavanda → Violeta, legible muted text */
-  --arena-bright: #f6f1ea; /* Arena lightened, raised cards */
-  --violeta-raised: #4d4b68; /* Violeta lightened, cards on dark */
+  --dorado-deep: #b3903f; /* Dorado darkened, hover */
+  --morado-ink: #5c4a6b; /* Morado → Crema, legible muted text */
+  --lila-mist: #f0e6f7; /* Light lavender, muted text on dark sections */
+  --crema-deep: #e8ddd0; /* Crema darkened, borders — from the concept's dividers */
 
   /* Semantic roles (components must only use these, via Tailwind tokens) */
-  --background: var(--arena-suave);
-  --surface: var(--arena-bright);
+  --background: var(--crema);
+  --surface: #ffffff;
   --panel: var(--lila-nebulosa);
-  --foreground: var(--violeta-eclipse);
-  --muted: var(--lavanda-ink);
-  --soft: var(--lavanda);
-  --line: var(--lila-grisaceo);
-  --accent: var(--melocoton);
-  --accent-hover: var(--melocoton-deep);
-  --dark: var(--violeta-eclipse);
-  --dark-raised: var(--violeta-raised);
-  --on-dark: var(--arena-suave);
-  --on-dark-muted: var(--lila-grisaceo);
+  --foreground: var(--morado-oscuro);
+  --muted: var(--morado-ink);
+  --soft: var(--dorado);
+  --line: var(--crema-deep);
+  --accent: var(--dorado);
+  --accent-hover: var(--dorado-deep);
+  --dark: var(--morado-oscuro);
+  --dark-raised: var(--morado);
+  --on-dark: var(--crema);
+  --on-dark-muted: var(--lila-mist);
 }
 
 @theme inline {
@@ -84,9 +84,9 @@
   --color-on-dark-muted: var(--on-dark-muted);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
-  /* Violet-tinted soft shadow for raised cards (shadow-card utility) */
-  --shadow-card: 0 10px 30px -14px rgb(64 63 86 / 0.25);
-  --shadow-cta: 0 12px 28px -10px rgb(221 138 77 / 0.55);
+  /* Morado-tinted soft shadow for raised cards (shadow-card utility) */
+  --shadow-card: 0 10px 30px -14px rgb(46 28 61 / 0.25);
+  --shadow-cta: 0 12px 28px -10px rgb(200 162 74 / 0.55);
 }
 
 body {
