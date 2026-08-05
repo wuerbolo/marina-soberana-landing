@@ -1,21 +1,29 @@
 import Link from "next/link";
 
+const META = [
+  "Online · 6 meses",
+  "Clases en directo",
+  "Acompañamiento individual + grupal",
+  "Manuales descargables para crear tus acompañamientos",
+  "Prácticas únicas de este máster",
+];
+
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-b from-panel via-panel/60 to-background">
+    <section className="bg-gradient-to-b from-dark via-dark to-panel text-on-dark">
       <div className="mx-auto max-w-3xl px-6 pb-20 pt-20 text-center md:pb-28 md:pt-28">
-        <p className="text-xs uppercase tracking-[0.35em] text-muted">
-          Proceso de evolución, sanación y manifestación
+        <p className="text-xs uppercase tracking-[0.35em] text-accent">
+          Máster de Registros Akáshicos
         </p>
-        <h1 className="mt-5 font-serif text-5xl font-light tracking-tight md:text-7xl">
-          Soberana
+        <h1 className="mt-5 font-serif text-4xl font-light leading-tight tracking-tight md:text-6xl">
+          Aprende a canalizar Registros Akáshicos{" "}
+          <em className="text-accent not-italic">como un terapeuta profesional</em> — sin
+          sentir que te quedas en blanco o que te lo inventas
         </h1>
-        <p className="mt-8 text-lg leading-relaxed text-foreground/90 md:text-xl">
-          Rompe y libera miedos, lealtades familiares y heridas del alma para avanzar
-          con claridad, confianza y merecimiento.
-        </p>
-        <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
-          Aprende a manifestar amor, paz y dinero, sin sentir culpa o que pides demasiado.
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-on-dark-muted md:text-xl">
+          Soberana es un máster de Registros Akáshicos + terapias emocionales de 6 meses
+          para que te conviertas en terapeuta de Registros Akáshicos y crees
+          acompañamientos con resultados profundos y duraderos para tus clientes.
         </p>
         <div className="mt-12">
           <Link
@@ -25,14 +33,24 @@ export default function Hero() {
           >
             Quiero saber si es para mí
           </Link>
-          <p className="mt-4 text-xs uppercase tracking-widest text-muted">
+          <p className="mt-4 text-xs uppercase tracking-widest text-on-dark-muted">
             3 minutos · sin compromiso
           </p>
         </div>
-        <p className="mt-14 text-sm text-muted">
-          <span className="font-serif text-2xl font-light text-foreground">+60 mujeres</span>
-          <span className="mx-2 text-soft">·</span>
-          transformaciones reales en su vida personal, familiar y profesional
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {META.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-accent/40 px-4 py-2 text-xs tracking-wide text-on-dark-muted"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        <p className="mt-14 text-sm text-on-dark-muted">
+          <span className="font-serif text-2xl font-light text-on-dark">+60 alumnas</span>
+          <span className="mx-2 text-accent">·</span>
+          ya han hecho el máster Soberana
         </p>
       </div>
     </section>
