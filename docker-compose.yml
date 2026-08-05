@@ -3,6 +3,17 @@
 # Source is bind-mounted, so edits on the host reload live. node_modules and
 # .next are kept inside the container (anonymous volumes) so the image's
 # Linux-built deps aren't shadowed by the host.
+
+# Dev and production are separate compose projects, and must stay that way.
+# Both stacks live in this one directory and both call their service `web`, so
+# with the project name left to be derived from the directory they were the
+# same project: starting dev *replaced* the running production container with a
+# dev one — on the VPS, where production is served from this same checkout.
+# Pinning the name here is what keeps `docker compose up` in this repo unable to
+# reach production. Production keeps the directory-derived name, so nothing
+# about deploying changes.
+name: soberana-landing-dev
+
 services:
   web:
     build:
