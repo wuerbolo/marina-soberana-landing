@@ -2,21 +2,35 @@ const FASES = [
   {
     num: "1",
     hito: "A los 15 días",
-    title: "Canalizas con un método que te da claridad y seguridad",
-    body: "Aprendes a relajar tu sistema nervioso, a limpiar y expandir tu energía y a desbloquear las interferencias de tu canal para recibir mensajes con claridad, sin quedarte con energías negativas. Encontrarás el origen de tus heridas del alma y sabrás cómo liberar creencias limitantes, miedos y patrones de sabotaje. Ganarás seguridad, confianza y autoestima al abrir Registros Akáshicos.",
+    title: "Canalizas con claridad sin sentir que te lo inventas",
+    objetivos: [
+      "Sabes relajar tu cuerpo y sentirte a salvo para abrir tu canal.",
+      "Formulas preguntas evolutivas y tienes un método propio para verificar lo que recibes.",
+      "Proteges tu energía antes de cada sesión.",
+      "Identificas y empiezas a liberar los bloqueos inconscientes (miedos, patrones, heridas del alma) que te alejan de tus objetivos.",
+    ],
   },
   {
     num: "2",
     hito: "A los 3 meses",
-    title:
-      "Practicas con otras personas para dar mensajes de evolución, sanación y manifestación",
-    body: "Descubre qué es el alma: tu propósito, los pactos prenatales que has hecho con tu grupo de almas, cómo recorrer vidas pasadas para traer al presente dones y sanar traumas, creencias y patrones del sistema familiar. Aprende a canalizar para otras personas, lugares y negocios y conoce a tu equipo de guías. Sentirás paz, ligereza y plenitud.",
+    title: "Tienes estructura y seguridad para trabajar con personas",
+    objetivos: [
+      "Canalizas para otras personas con información evolutiva y sanación energética.",
+      "Trabajas casos reales: autoestima, relaciones, rupturas, ansiedad, manifestaciones.",
+      "Sabes cómo canalizar mensajes de seres de luz, energías de casas y negocios.",
+      "Accedes a vidas pasadas para sanar traumas y heridas del alma.",
+    ],
   },
   {
     num: "3",
     hito: "A los 6 meses",
-    title: "Aceleras tus manifestaciones y te conviertes en terapeuta con visión completa",
-    body: "Entiendes cómo funciona tu sistema energético y aprendes a localizar bloqueos físicos, mentales, energéticos o emocionales y eliminarlos. Practicas técnicas de manifestación para atraer dinero, relaciones sanas y los cambios reales que buscas. Aprendes a proteger tu energía para no drenarte en tu día a día y terminas el máster lista para acompañar a otras personas con tu propio método.",
+    title: "Eres experta en crear evolución, sanación y manifestación en tus clientes",
+    objetivos: [
+      "Localizas y liberas bloqueos energéticos para acelerar tus manifestaciones.",
+      "Trabajas con líneas de tiempo para programar experiencias expansivas.",
+      "Proteges tu energía en el día a día para no drenarte.",
+      "Sabes cómo acompañar a otras personas con estructura, seguridad y claridad en tu método propio.",
+    ],
   },
 ];
 
@@ -28,8 +42,8 @@ export default function Recorrido() {
           Tu recorrido durante el máster
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Hitos reales de evolución, mes a mes, para pasar de tener curiosidad por los
-          Registros Akáshicos a convertirte en terapeuta.
+          Hitos reales de evolución, mes a mes, para pasar de ser lector de Registros
+          Akáshicos a convertirte en terapeuta.
         </p>
 
         <div className="relative mt-14 space-y-12">
@@ -49,7 +63,17 @@ export default function Recorrido() {
                   {fase.hito}
                 </p>
                 <h3 className="mt-2 font-serif text-2xl font-light">{fase.title}</h3>
-                <p className="mt-3 text-base leading-relaxed text-muted">{fase.body}</p>
+                <ul className="mt-3 space-y-2">
+                  {fase.objetivos.map((objetivo) => (
+                    <li
+                      key={objetivo}
+                      className="flex gap-2 text-base leading-relaxed text-muted"
+                    >
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      <span>{objetivo}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

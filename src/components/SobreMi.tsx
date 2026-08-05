@@ -31,9 +31,9 @@ export default function SobreMi() {
             </p>
             <p>
               Voy a enseñarte a aplicar de forma práctica herramientas emocionales y
-              energéticas para que puedas ayudar en profundidad a tus clientes, logren
-              sus resultados y noten transformación desde la 2ª sesión, sin que pierdan
-              más tiempo ni dinero.
+              energéticas para que ayudes en profundidad a tus clientes: que logren sus
+              resultados y noten transformación desde la segunda sesión, sin perder más
+              tiempo ni dinero.
             </p>
           </div>
         </div>

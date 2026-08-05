@@ -21,9 +21,10 @@ export default function Hero() {
           sentir que te quedas en blanco o que te lo inventas
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-on-dark-muted md:text-xl">
-          Soberana es un máster de Registros Akáshicos + terapias emocionales de 6 meses
-          para que te conviertas en terapeuta de Registros Akáshicos y crees
-          acompañamientos con resultados profundos y duraderos para tus clientes.
+          Soberana no es un curso más de Registros Akáshicos: es el máster de Registros
+          Akáshicos + terapias emocionales de 6 meses con el que te formas en una nueva
+          profesión, con material 100% exclusivo de esta formación, para crear
+          acompañamientos con los que tus clientes notan resultados desde la 2ª sesión.
         </p>
         <div className="mt-12">
           <Link

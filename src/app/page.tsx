@@ -1,3 +1,4 @@
+import Dolores from "@/components/Dolores";
 import Enfoque from "@/components/Enfoque";
 import FinalCTA from "@/components/FinalCTA";
 import Hero from "@/components/Hero";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Dolores />
       <SobreMi />
       <Logros />
       <Enfoque />

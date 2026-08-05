@@ -1,5 +1,5 @@
 // Transcribed from the WhatsApp screenshots Marina supplied (testimonios/testimonio-01,
-// 02, 04, 06.jpg) — text only, no names or photos, per Marina.
+// 02, 04, 06, 19.jpg) — text only, no names or photos, per Marina.
 const TESTIMONIALS = [
   {
     quote:
@@ -16,6 +16,10 @@ const TESTIMONIALS = [
   {
     quote:
       "Hola preciosa!!!!! La verdad es que yo estoy muy alucinada, me fascina tu acompañamiento y me siento super segura, despues de la clase 3 hay un antes y un después en mí, sin darme apenas cuenta me siento mas confiada y estoy más conectada conmigo y con la fuente. Gracias de verdad.",
+  },
+  {
+    quote:
+      "Hola Marinaaa, me está flipando Soberana. Yo ya había hecho formación de Registros Akáshicos, pero nada como esto!! Te lo quería decir personalmente. Además ponerle esa visión de terapia que nos enseñas me resulta muy útil para usar en mis sesiones, cada vez me siento más segura de cómo enfocarlas. Todavía no me veo cobrando, pero te prometo que lo estoy desbloqueando. ¡Nos vemos el jueves!",
   },
 ];
 
