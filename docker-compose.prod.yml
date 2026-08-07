@@ -19,6 +19,15 @@ services:
     container_name: soberana-landing-prod
     environment:
       - NODE_ENV=production
+    # Cap container logs: Docker's json-file driver is unbounded by default,
+    # which is a slow disk-full waiting for real traffic. 100MB ceiling.
+    # stdout/stderr is for debugging only — anything that has to survive
+    # belongs in the database, not in a log file.
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
     networks:
       - web
     labels:
