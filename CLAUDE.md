@@ -21,7 +21,7 @@ Judge every change against these two.
 
 ## Develop & deploy
 - This repo may be iterated directly on the VPS (Claude Code + tmux): edit → `./deploy.sh` → check https://escuelasoberana.com. Low blast radius (no state here — leads live in the backend), but commit and push to GitHub as you go; that's the only backup.
-- Local dev: `docker compose up -d` (:3400) against the backend dev stack.
+- Local dev: `docker compose up -d` (:3400) against the backend dev stack. The VPS is small and shared by multiple concurrent agent sessions — if you bring the dev stack up to run checks, `docker compose down` it as soon as you're done; don't leave it running idle.
 
 ## Agent skills
 
