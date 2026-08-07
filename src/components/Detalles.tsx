@@ -1,7 +1,7 @@
 const ITEMS = [
   { label: "Modalidad", valor: "Online" },
   { label: "Duración", valor: "6 meses" },
-  { label: "Horario", valor: "Tardes (hora Madrid)" },
+  { label: "Horario", valor: "18–20h (hora Madrid)" },
   { label: "Clases", valor: "En directo" },
   { label: "Acompañamiento", valor: "Semanal" },
 ];

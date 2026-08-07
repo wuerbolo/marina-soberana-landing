@@ -3,7 +3,7 @@ import Link from "next/link";
 const META = [
   "Online · 6 meses",
   "Clases en directo",
-  "Acompañamiento individual + grupal",
+  "Acompañamiento semanal: conmigo + tutora",
   "Manuales descargables para crear tus acompañamientos",
   "Prácticas únicas de este máster",
 ];
@@ -24,7 +24,7 @@ export default function Hero() {
           Soberana no es un curso más de Registros Akáshicos: es el máster de Registros
           Akáshicos + terapias emocionales de 6 meses con el que te formas en una nueva
           profesión, con material 100% exclusivo de esta formación, para crear
-          acompañamientos con los que tus clientes notan resultados desde la 2ª sesión.
+          acompañamientos con los que tus clientes vean resultados desde el día 1.
         </p>
         <div className="mt-12">
           <Link
@@ -48,11 +48,6 @@ export default function Hero() {
             </span>
           ))}
         </div>
-        <p className="mt-14 text-sm text-on-dark-muted">
-          <span className="font-serif text-2xl font-light text-on-dark">+60 alumnas</span>
-          <span className="mx-2 text-accent">·</span>
-          ya han hecho el máster Soberana
-        </p>
       </div>
     </section>
   );

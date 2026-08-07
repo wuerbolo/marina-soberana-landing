@@ -1,5 +1,6 @@
 // Transcribed from the WhatsApp screenshots Marina supplied (testimonios/testimonio-01,
-// 02, 04, 06, 19.jpg) — text only, no names or photos, per Marina.
+// 02, 03, 04, 07, 08, 10, 11.jpg — soberana-webv3 revision, which re-curated this block)
+// — text only, no names or photos, per Marina.
 const TESTIMONIALS = [
   {
     quote:
@@ -11,15 +12,27 @@ const TESTIMONIALS = [
   },
   {
     quote:
+      "Buenos días, acabo de hacer la clase bonus de desbloqueo de dones y ha sido brutal el último ejercicio. Ahora he salido fuera, que vivo en el campo y siento los colores mucho más intensos de la naturaleza, los sonidos de los animales más afinados y una inmensa paz. Me siento distinta. Muchas gracias Marina.",
+  },
+  {
+    quote:
       "Marina me has dado tantas herramientas y tan prácticas que estoy encantada. He hecho muchas formaciones pero nada como esto. Estoy flipando con las prácticas que estoy haciendo y con los resultados de mis clientes. Cada día veo más cerca mi consulta.",
   },
   {
     quote:
-      "Hola preciosa!!!!! La verdad es que yo estoy muy alucinada, me fascina tu acompañamiento y me siento super segura, despues de la clase 3 hay un antes y un después en mí, sin darme apenas cuenta me siento mas confiada y estoy más conectada conmigo y con la fuente. Gracias de verdad.",
+      "Por otro lado la ayuda incondicional de Marina es una de las claves del curso, su energía, su luz, su feedback de cualquier duda, su practicidad... hace que todo sea mucho más fácil. Los Registros Akáshicos, un imprescindible en mi vida a partir de ahora!",
   },
   {
     quote:
-      "Hola Marinaaa, me está flipando Soberana. Yo ya había hecho formación de Registros Akáshicos, pero nada como esto!! Te lo quería decir personalmente. Además ponerle esa visión de terapia que nos enseñas me resulta muy útil para usar en mis sesiones, cada vez me siento más segura de cómo enfocarlas. Todavía no me veo cobrando, pero te prometo que lo estoy desbloqueando. ¡Nos vemos el jueves!",
+      "Buenos días! Yo flipé, Marina, de pensar que no sería capaz a de repente verme apuntando cosas... Es un tema de confiar en lo que te trae el cuerpo o lo que venga y recogerlo para indagar. Me encanta el proceso de preguntas, puedes testearlo todo y esto ayuda mucho a poder afinar, descartar, potenciar o lo que requiera.",
+  },
+  {
+    quote:
+      "Hola Marina!!! Me cuesta poner en palabras todo lo que este curso significa para mí. Más que un curso, ha sido una experiencia transformadora. Me ha permitido confiar más en mí, desbloquear aspectos que ni siquiera sabía que estaban ahí y llevarme una herramienta para toda la vida. Saber que puedo acudir a los Registros para comprender, sanar y avanzar me aporta una gran sensación de paz y bienestar.",
+  },
+  {
+    quote:
+      "A mí me ha gustado mucho, porque todo esto de limpieza me encanta y hay cosas que no sabía que hemos aprendido. Gracias, Marina, muy productiva.",
   },
 ];
 

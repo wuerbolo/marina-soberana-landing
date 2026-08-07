@@ -12,7 +12,7 @@ const ITEMS = [
   {
     question: "Ya he hecho un curso de Registros Akáshicos y no sentí ni vi nada.",
     answer:
-      "Hay muchas formaciones de Registros Akáshicos superficiales que no te enseñan a canalizar a tu manera —intentan que hagas algo que no eres— y que no te dan herramientas para desarrollar la apertura de canal y recibir mensajes con claridad. Este no es el caso: es un máster de alto nivel, con un método construido en +2 años y ya recorrido por más de 60 alumnas.",
+      "Hay muchos libros y formaciones que te dan un método o unas oraciones que no son tuyas —intentan que hagas algo que no eres— y por eso no conectas ni canalizas con ellos. Aquí no vas a seguir un protocolo ajeno: vas a encontrar tu propia forma de canalizar, con herramientas para abrir tu canal y recibir mensajes con claridad. Es un máster de alto nivel, con un método construido en +2 años y ya recorrido por más de 60 alumnas.",
   },
   {
     question: "¿Y si yo no quiero dejar mi trabajo para ser terapeuta?",
