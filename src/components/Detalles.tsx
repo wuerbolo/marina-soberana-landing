@@ -4,6 +4,7 @@ const ITEMS = [
   { label: "Horario", valor: "18–20h (hora Madrid)" },
   { label: "Clases", valor: "En directo" },
   { label: "Acompañamiento", valor: "Semanal" },
+  { label: "Plazas", valor: "Limitadas" },
 ];
 
 export default function Detalles() {
