@@ -1,4 +1,4 @@
-import type { LeadQuestion, LeadSubmission, QualifyResponse } from "./types";
+import type { LeadCreated, LeadQuestion, LeadSubmission } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -38,15 +38,10 @@ export function getQuestions(): Promise<LeadQuestion[]> {
   return apiFetch<LeadQuestion[]>("/leads/questions");
 }
 
-export function qualify(answers: Record<string, boolean>): Promise<QualifyResponse> {
-  return apiFetch<QualifyResponse>("/leads/qualify", {
-    method: "POST",
-    body: JSON.stringify({ answers }),
-  });
-}
-
-export function submitLead(payload: LeadSubmission): Promise<{ is_qualified: boolean }> {
-  return apiFetch<{ is_qualified: boolean }>("/leads", {
+// The funnel's only write, and the only place qualification is decided: it
+// creates the lead and answers which screen follows. Nothing here scores.
+export function submitLead(payload: LeadSubmission): Promise<LeadCreated> {
+  return apiFetch<LeadCreated>("/leads", {
     method: "POST",
     body: JSON.stringify(payload),
   });

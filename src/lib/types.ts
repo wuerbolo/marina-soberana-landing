@@ -3,16 +3,18 @@ export interface LeadQuestion {
   prompt: string;
 }
 
-export interface QualifyResponse {
-  score: number;
-  is_qualified: boolean;
-}
-
 export interface LeadSubmission {
+  answers: Record<string, boolean>;
   full_name: string;
   email: string;
-  phone?: string;
-  answers: Record<string, boolean>;
-  message?: string;
-  preferred_times?: string;
+  phone: string;
+  consent: boolean;
+}
+
+export interface LeadCreated {
+  is_qualified: boolean;
+  // The gate to quote back on the Tus Guías Te Hablan screen — the id of one of
+  // the questions already held here. The server picks it; null when she cleared
+  // every gate.
+  gate_to_quote: string | null;
 }

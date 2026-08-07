@@ -2,25 +2,34 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getQuestions, qualify, submitLead } from "@/lib/api";
-import type { LeadQuestion } from "@/lib/types";
+import { ApiError, getQuestions, submitLead } from "@/lib/api";
+import { CallScreen, GuiasScreen } from "@/components/QualifierResult";
+import type { LeadCreated, LeadQuestion } from "@/lib/types";
 
-type Stage =
-  | "loading"
-  | "load-error"
-  | "questions"
-  | "result-qualified"
-  | "result-unqualified"
-  | "contact-form"
-  | "nurture-form"
-  | "submitted-qualified"
-  | "submitted-nurture";
+// One question per screen, then contact and consent, then a single submission
+// that both creates the lead and decides which of the two closing screens she
+// sees. Nothing here scores or judges: the server owns the outcome, and this
+// component only knows which question prompt it was told to quote back.
+type Stage = "loading" | "load-error" | "questions" | "contact" | "result";
+
+interface Contact {
+  fullName: string;
+  email: string;
+  phone: string;
+  consent: boolean;
+}
+
+const EMPTY_CONTACT: Contact = { fullName: "", email: "", phone: "", consent: false };
 
 export default function FunnelStepper() {
   const [stage, setStage] = useState<Stage>("loading");
   const [questions, setQuestions] = useState<LeadQuestion[]>([]);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, boolean>>({});
+  // Held here, not in the form: stepping back to revise an answer unmounts the
+  // form, and retyping her details would look like the page lost them.
+  const [contact, setContact] = useState<Contact>(EMPTY_CONTACT);
+  const [result, setResult] = useState<LeadCreated | null>(null);
 
   useEffect(() => {
     getQuestions()
@@ -33,20 +42,13 @@ export default function FunnelStepper() {
 
   function answer(value: boolean) {
     const q = questions[step];
-    const next = { ...answers, [q.id]: value };
-    setAnswers(next);
+    setAnswers({ ...answers, [q.id]: value });
 
     if (step + 1 < questions.length) {
       setStep(step + 1);
-      return;
+    } else {
+      setStage("contact");
     }
-
-    // Last question — reveal the result.
-    qualify(next)
-      .then((res) => {
-        setStage(res.is_qualified ? "result-qualified" : "result-unqualified");
-      })
-      .catch(() => setStage("load-error"));
   }
 
   if (stage === "loading") {
@@ -65,8 +67,11 @@ export default function FunnelStepper() {
     const q = questions[step];
     return (
       <div className="mx-auto max-w-xl px-6 py-20 md:py-28">
-        <Progress current={step} total={questions.length} />
-        <p key={q.id} className="fade-up mt-10 font-serif text-2xl font-light leading-snug md:text-3xl">
+        <Progress current={step} total={questions.length + 1} />
+        <p
+          key={q.id}
+          className="fade-up mt-10 font-serif text-2xl font-light leading-snug md:text-3xl"
+        >
           {q.prompt}
         </p>
         <div className="mt-10 flex gap-4">
@@ -95,154 +100,104 @@ export default function FunnelStepper() {
     );
   }
 
-  if (stage === "result-qualified") {
-    return (
-      <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-foreground">Resultado</p>
-        <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
-          Por lo que cuentas, Soberana puede ser para ti.
-        </h2>
-        <p className="mt-5 text-base leading-relaxed text-muted">
-          El siguiente paso es una llamada con Marina para conoceros y resolver tus
-          dudas. Déjanos tus datos y te contactará para agendarla.
-        </p>
-        <button
-          onClick={() => setStage("contact-form")}
-          data-umami-event="cta-qualified-continue"
-          className="mt-10 inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
-        >
-          Continuar
-        </button>
-      </div>
-    );
-  }
-
-  if (stage === "result-unqualified") {
-    return (
-      <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
-        <p className="text-xs uppercase tracking-[0.3em] text-foreground">Resultado</p>
-        <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
-          Por ahora, Soberana no parece el paso adecuado para ti.
-        </h2>
-        <p className="mt-5 text-base leading-relaxed text-muted">
-          No pasa nada — es un proceso profundo y solo tiene sentido cuando es el
-          momento correcto. Si quieres, déjanos tu email y te avisaremos de futuras
-          aperturas y contenido gratuito.
-        </p>
-        <div className="mt-10 flex flex-col items-center gap-3">
-          <button
-            onClick={() => setStage("nurture-form")}
-            data-umami-event="cta-nurture-signup"
-            className="inline-flex rounded-full bg-accent px-8 py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover"
-          >
-            Avísame en el futuro
-          </button>
-          <Link href="/" className="text-xs uppercase tracking-widest text-muted hover:text-foreground">
-            Quizá más adelante
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  if (stage === "contact-form") {
+  if (stage === "contact") {
     return (
       <ContactForm
         answers={answers}
-        qualified
-        onSuccess={() => setStage("submitted-qualified")}
+        totalSteps={questions.length + 1}
+        contact={contact}
+        onContactChange={setContact}
+        onBack={() => {
+          setStep(questions.length - 1);
+          setStage("questions");
+        }}
+        onSubmitted={(created) => {
+          setResult(created);
+          setStage("result");
+        }}
       />
     );
   }
 
-  if (stage === "nurture-form") {
-    return (
-      <ContactForm
-        answers={answers}
-        qualified={false}
-        onSuccess={() => setStage("submitted-nurture")}
-      />
-    );
+  // stage === "result"
+  if (result?.is_qualified) {
+    return <CallScreen fullName={contact.fullName} />;
   }
 
-  if (stage === "submitted-qualified") {
-    return (
-      <Centered>
-        <p className="font-serif text-2xl font-light">¡Gracias!</p>
-        <p className="mt-3 text-base text-muted">
-          Marina revisará tus respuestas y te contactará para agendar vuestra llamada.
-        </p>
-      </Centered>
-    );
-  }
-
-  // submitted-nurture
-  return (
-    <Centered>
-      <p className="font-serif text-2xl font-light">¡Gracias!</p>
-      <p className="mt-3 text-base text-muted">
-        Te avisaremos por email cuando haya novedades.
-      </p>
-    </Centered>
-  );
+  const quoted = questions.find((q) => q.id === result?.gate_to_quote);
+  return <GuiasScreen quotedPrompt={quoted?.prompt ?? null} consent={contact.consent} />;
 }
 
 function ContactForm({
   answers,
-  qualified,
-  onSuccess,
+  totalSteps,
+  contact,
+  onContactChange,
+  onBack,
+  onSubmitted,
 }: {
   answers: Record<string, boolean>;
-  qualified: boolean;
-  onSuccess: () => void;
+  totalSteps: number;
+  contact: Contact;
+  onContactChange: (contact: Contact) => void;
+  onBack: () => void;
+  onSubmitted: (created: LeadCreated) => void;
 }) {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [preferredTimes, setPreferredTimes] = useState("");
-  const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { fullName, email, phone, consent } = contact;
+
+  function update(patch: Partial<Contact>) {
+    onContactChange({ ...contact, ...patch });
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!fullName.trim() || !email.trim()) {
-      setError("Indica tu nombre y email.");
+    if (!fullName.trim() || !email.trim() || !phone.trim()) {
+      setError("Necesito tu nombre, tu email y tu teléfono para poder responderte.");
       return;
     }
     setBusy(true);
     setError(null);
     try {
-      await submitLead({
+      const created = await submitLead({
+        answers,
         full_name: fullName.trim(),
         email: email.trim(),
-        phone: qualified ? phone.trim() || undefined : undefined,
-        answers,
-        message: message.trim() || undefined,
-        preferred_times: qualified ? preferredTimes.trim() || undefined : undefined,
+        phone: phone.trim(),
+        consent,
       });
-      onSuccess();
-    } catch {
-      setError("No se ha podido enviar. Inténtalo de nuevo.");
-    } finally {
+      onSubmitted(created);
+    } catch (err) {
+      // A 422 means the server rejected a field the browser let through — an
+      // address like "nombre@gmail" passes `type="email"` but not EmailStr.
+      // Saying "try again" to that sends her round an unwinnable loop.
+      setError(
+        err instanceof ApiError && err.status === 422
+          ? "Revisa tu email y tu teléfono: alguno no tiene un formato que podamos usar."
+          : "No se ha podido enviar. Inténtalo de nuevo.",
+      );
       setBusy(false);
     }
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="fade-up mx-auto max-w-md px-6 py-20 md:py-28"
-    >
-      <h2 className="font-serif text-2xl font-light leading-snug md:text-3xl">
-        {qualified ? "Cuéntame cómo contactarte" : "Déjame tu email"}
+    <form onSubmit={handleSubmit} className="mx-auto max-w-md px-6 py-20 md:py-28">
+      <Progress current={totalSteps - 1} total={totalSteps} />
+      <h2 className="fade-up mt-10 font-serif text-2xl font-light leading-snug md:text-3xl">
+        Un último paso: dime quién eres.
       </h2>
+      <p className="mt-4 text-sm leading-relaxed text-muted">
+        Con esto puedo darte una respuesta a tu medida y escribirte si hace falta.
+        El teléfono es obligatorio: es por donde te contesto.
+      </p>
 
       <div className="mt-8 space-y-5">
         <Field label="Nombre">
           <input
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            onChange={(e) => update({ fullName: e.target.value })}
+            autoComplete="name"
             className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
           />
         </Field>
@@ -250,48 +205,48 @@ function ContactForm({
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => update({ email: e.target.value })}
+            autoComplete="email"
             className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
           />
         </Field>
-        {qualified && (
-          <>
-            <Field label="Teléfono (opcional)">
-              <input
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
-              />
-            </Field>
-            <Field label="¿Cuándo te viene bien la llamada? (opcional)">
-              <input
-                value={preferredTimes}
-                onChange={(e) => setPreferredTimes(e.target.value)}
-                placeholder="Ej. martes y jueves por la tarde"
-                className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
-              />
-            </Field>
-            <Field label="¿Algo que quieras contarme? (opcional)">
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={3}
-                className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
-              />
-            </Field>
-          </>
-        )}
+        <Field label="Teléfono">
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => update({ phone: e.target.value })}
+            autoComplete="tel"
+            className="w-full border-b border-line bg-transparent pb-2 text-sm outline-none focus:border-accent"
+          />
+        </Field>
       </div>
+
+      {/* Unticked by default — a pre-ticked box is not consent she gave. */}
+      <label className="mt-8 flex cursor-pointer gap-3 rounded-xl border border-line bg-surface p-5">
+        <input
+          type="checkbox"
+          checked={consent}
+          onChange={(e) => update({ consent: e.target.checked })}
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
+        />
+        <span className="text-sm leading-relaxed">
+          Quiero recibir las cartas de Marina por email.
+          <span className="mt-1 block text-xs leading-relaxed text-muted">
+            Escribe sobre su trabajo y su forma de mirar. A veces habla de Soberana
+            y a veces no vende nada. Puedes darte de baja cuando quieras.
+          </span>
+        </span>
+      </label>
 
       {error && <p className="mt-5 text-sm text-foreground">{error}</p>}
 
       <button
         type="submit"
         disabled={busy}
-        data-umami-event={qualified ? "cta-submit-qualified" : "cta-submit-nurture"}
-        className="mt-10 w-full rounded-full bg-accent py-4 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-accent-hover disabled:opacity-50"
+        data-umami-event="cta-qualifier-submit"
+        className="mt-8 w-full rounded-full bg-accent py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-colors hover:bg-accent-hover disabled:opacity-50"
       >
-        {busy ? "Enviando…" : qualified ? "Solicitar mi llamada" : "Avisarme"}
+        {busy ? "Enviando…" : "Continuar"}
       </button>
       <p className="mt-4 text-xs leading-relaxed text-muted">
         Al enviar aceptas nuestra{" "}
@@ -300,6 +255,14 @@ function ContactForm({
         </Link>
         .
       </p>
+      <button
+        type="button"
+        onClick={onBack}
+        disabled={busy}
+        className="mt-8 text-xs uppercase tracking-widest text-muted hover:text-foreground disabled:opacity-50"
+      >
+        ← Anterior
+      </button>
     </form>
   );
 }
