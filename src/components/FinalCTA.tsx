@@ -27,7 +27,7 @@ export default function FinalCTA() {
         <h2 className="font-serif text-[clamp(23px,5.6vw,29px)] font-semibold leading-[1.2] text-balance">
           Antes de entrar, hablamos
         </h2>
-        <p className="t-note max-w-[520px] text-pretty text-on-dark-muted">
+        <p className="max-w-[520px] text-pretty text-[clamp(15.5px,4vw,17.5px)] leading-[1.66] text-on-dark-muted">
           Soberana se trabaja de forma cercana y personalizada, así que antes de unirte
           hablamos en una llamada. Empieza por estas preguntas para saber si es tu momento.
         </p>
@@ -36,14 +36,17 @@ export default function FinalCTA() {
           objection is fear of the call itself. Three concrete lines defuse it.
           No question count is stated — the server owns the questions.
         */}
-        <ol className="flex max-w-[420px] flex-col gap-2 text-left">
+        <ol className="flex max-w-[440px] flex-col gap-2.5 text-left">
           {[
             "Respondes unas preguntas — 3 minutos.",
             "Si encaja, hablamos por WhatsApp — sin guion de ventas.",
             "Decides con calma y con toda la información, precio incluido.",
           ].map((step, i) => (
-            <li key={step} className="flex items-baseline gap-3 text-[14.5px] text-on-dark-muted">
-              <span className="font-serif text-[17px] font-bold leading-none text-accent-soft">
+            <li
+              key={step}
+              className="flex items-baseline gap-3 text-[clamp(15px,4vw,17px)] leading-[1.5] text-on-dark-muted"
+            >
+              <span className="font-serif text-[clamp(18px,4.6vw,20px)] font-bold leading-none text-accent-soft">
                 {i + 1}
               </span>
               {step}
@@ -57,7 +60,7 @@ export default function FinalCTA() {
         >
           Quiero saber si es para mí
         </Link>
-        <small className="text-[13px] text-on-dark-quiet">
+        <small className="text-[14px] text-on-dark-quiet">
           3 minutos · sin compromiso
         </small>
       </div>

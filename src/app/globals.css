@@ -222,16 +222,18 @@ body {
   }
 
   /*
-    h3 inside a card or a phase. 700, not the reference's 600: Cormorant is a
-    hairline serif, and below ~22px its 600 disappears on Windows' grayscale
-    antialiasing (reported unreadable on a real client machine, 2026-08-08).
-    At card sizes the extra weight is what keeps the hairlines printed at all.
+    h3 inside a card or an accordion summary (Enfoque, Antes de decidir). Uses
+    the sans face, not the serif: Cormorant is a hairline serif that washes out
+    at card sizes under grayscale antialiasing (reported unreadable on a Windows
+    client machine, 2026-08-08). Jost stays crisp and legible this small, and
+    600 gives the title enough weight to read as a heading.
   */
   .h-card {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(18px, 4.4vw, 21px);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.3;
+    letter-spacing: -0.005em;
     color: var(--foreground);
   }
 

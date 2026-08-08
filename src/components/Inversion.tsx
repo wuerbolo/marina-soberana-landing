@@ -27,12 +27,12 @@ export default function Inversion() {
             2.000€
           </strong>
         </p>
-        <p className="-mt-2.5 text-[13px] text-on-dark-quiet">
+        <p className="-mt-2.5 text-[14px] text-on-dark-quiet">
           Disponible con pago único o fraccionado.
         </p>
         <div className="w-full rounded-[14px] border border-accent-soft/55 px-5 py-[18px] text-left">
           <span className="t-label mb-2 block text-accent-soft">Mi garantía</span>
-          <p className="text-pretty text-[14.5px] leading-[1.62] text-on-dark-muted">
+          <p className="text-pretty text-[clamp(15px,4vw,17px)] leading-[1.62] text-on-dark-muted">
             Confío tanto en este método que te lo aseguro: si al terminar el máster
             sientes que quieres seguir practicando para tener seguridad total, te regalo
             2 meses más de acceso a prácticas conmigo. Vas a canalizar con claridad, y si
@@ -50,7 +50,7 @@ export default function Inversion() {
         >
           Quiero saber si Soberana es para mí →
         </Link>
-        <small className="text-[13px] text-on-dark-quiet">Plazas limitadas</small>
+        <small className="text-[14px] text-on-dark-quiet">Plazas limitadas</small>
       </div>
     </section>
   );
