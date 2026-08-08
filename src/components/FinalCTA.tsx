@@ -33,7 +33,7 @@ export default function FinalCTA() {
         >
           Quiero saber si es para mí
         </Link>
-        <small className="text-[13px] font-light text-on-dark-quiet">
+        <small className="text-[13px] text-on-dark-quiet">
           3 minutos · sin compromiso
         </small>
       </div>

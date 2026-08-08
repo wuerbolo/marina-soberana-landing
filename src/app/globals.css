@@ -32,6 +32,11 @@
      copy is 300 and the display face is a fine-hairline old-style serif
      (Cormorant Garamond over Jost — see layout.tsx). Everything else here is
      a rounding error next to that.
+     [Amended 2026-08-08: the 300 is gone. It was tuned on a Mac; on Windows'
+     grayscale antialiasing it rendered as unreadable smudge (client report,
+     twice in one day). Running copy is now 400 with slightly larger caps —
+     the calm now has to come from the serif display, the palette and the
+     spacing, which survive. Benchmark the client named: acquisition.com.]
   2. Sizes are fluid, not stepped. One clamp() per role instead of a
      breakpoint jump, so a phone gets a genuinely smaller page rather than a
      squeezed desktop one. That is what the .t-* / .h-* classes below are.
@@ -232,22 +237,22 @@ body {
 
   /* The hero's standfirst — the only paragraph allowed to run this large. */
   .t-lead {
-    font-size: clamp(15px, 3.8vw, 18px);
-    font-weight: 300;
+    font-size: clamp(15.5px, 3.8vw, 19px);
+    font-weight: 400;
     line-height: 1.62;
   }
 
   /* Running copy. */
   .t-body {
-    font-size: clamp(15px, 3.8vw, 16.5px);
-    font-weight: 300;
+    font-size: clamp(15px, 3.8vw, 17px);
+    font-weight: 400;
     line-height: 1.66;
   }
 
   /* Running copy in a list, where the tighter leading keeps items distinct. */
   .t-list {
     font-size: clamp(15px, 3.9vw, 17px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.58;
   }
 
@@ -266,8 +271,8 @@ body {
 
   /* Copy nested inside a card — fixed, because the card is already fluid. */
   .t-note {
-    font-size: 15px;
-    font-weight: 300;
+    font-size: 15.5px;
+    font-weight: 400;
     line-height: 1.66;
   }
 
