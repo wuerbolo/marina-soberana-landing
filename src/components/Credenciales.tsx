@@ -23,7 +23,8 @@ export default function Credenciales() {
             <p className="font-serif text-[clamp(34px,8vw,42px)] font-bold leading-none text-accent-soft">
               <CountUp value={item.value} prefix={item.prefix} />
             </p>
-            <p className="mt-2 text-[12.5px] font-light leading-[1.45] text-on-dark-quiet">
+            {/* 400, not 300: 12.5px light-on-dark is where thin type dies on Windows. */}
+            <p className="mt-2 text-[12.5px] leading-[1.45] text-on-dark-quiet">
               {item.label}
             </p>
           </div>

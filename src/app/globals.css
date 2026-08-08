@@ -216,11 +216,16 @@ body {
     color: var(--foreground);
   }
 
-  /* h3 inside a card or a phase. */
+  /*
+    h3 inside a card or a phase. 700, not the reference's 600: Cormorant is a
+    hairline serif, and below ~22px its 600 disappears on Windows' grayscale
+    antialiasing (reported unreadable on a real client machine, 2026-08-08).
+    At card sizes the extra weight is what keeps the hairlines printed at all.
+  */
   .h-card {
     font-family: var(--font-serif);
     font-size: clamp(18px, 4.4vw, 21px);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.3;
     color: var(--foreground);
   }
@@ -246,11 +251,17 @@ body {
     line-height: 1.58;
   }
 
-  /* The line under a section heading. */
+  /*
+    The line under a section heading. The one role where the reference's 300 is
+    abandoned: at ~15px in the muted colour it was reported unreadable on a
+    Windows machine (2026-08-08) — thin strokes at small sizes wash out under
+    grayscale antialiasing that macOS/mobile never shows. One weight up and one
+    ink step down; the size stays the reference's.
+  */
   .t-sub {
     font-size: clamp(14.5px, 3.6vw, 16px);
-    font-weight: 300;
-    color: var(--muted);
+    font-weight: 400;
+    color: var(--body-soft);
   }
 
   /* Copy nested inside a card — fixed, because the card is already fluid. */

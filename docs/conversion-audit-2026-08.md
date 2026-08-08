@@ -111,6 +111,13 @@ For completeness, tactics from the genre that would raise short-term clicks and 
 
 ---
 
+## Addendum (2026-08-08, later the same day)
+
+Two updates after Marina's full reference was reviewed on the client's machine:
+
+1. **The "Precio" card from the reference is now on the page** (`Inversion.tsx`, between Testimonios 2 and the FAQ, copy verbatim): "Inversión desde 2.000€", the pago único/fraccionado note, the "Mi garantía" box (2 extra months of prácticas — a Hormozi-style outcome guarantee, which §4 noted the page lacked), and its own CTA. This supersedes §6's "price stays off the page" stance by client decision: the page now states the *floor*, which pre-frames the qualifier's price disclosure instead of replacing it. CONTEXT.md's deflection entry was updated to match.
+2. **Legibility pass for Windows rendering** (reported unreadable on a real client PC — worth more than any aesthetic argument): section subtitles moved from weight 300/muted to 400/body-soft; FAQ questions unified onto `.h-card`, which itself went 600 → 700 (Cormorant's hairlines vanish below ~22px on Windows grayscale antialiasing); the 12.5px stat labels and the funnel's question text got the same one-step bump. Sizes unchanged; running copy stays 300 for now — if body text is also faint on Windows, the next step is a site-wide 300 → 400.
+
 ## Suggested order of implementation
 
 1. §2 metadata fix (5 minutes, pure win, no design risk).
