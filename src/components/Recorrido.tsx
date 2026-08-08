@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const FASES = [
   {
     num: "1",
@@ -36,15 +38,12 @@ const FASES = [
 
 export default function Recorrido() {
   return (
-    <section className="bg-surface">
+    <section className="bg-panel">
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Tu recorrido durante el máster
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Hitos reales de evolución, mes a mes, para pasar de ser lector de Registros
-          Akáshicos a convertirte en terapeuta.
-        </p>
+        <SectionHeading
+          title="Tu recorrido durante el máster"
+          subtitle="Hitos reales de evolución, mes a mes, para pasar de ser lector de Registros Akáshicos a convertirte en terapeuta."
+        />
 
         <div className="relative mt-14 space-y-12">
           <div
@@ -52,8 +51,8 @@ export default function Recorrido() {
             className="absolute bottom-2 left-7 top-2 w-px bg-gradient-to-b from-accent to-dark-raised opacity-40"
           />
           {FASES.map((fase) => (
-            <div key={fase.num} className="relative flex gap-6 pl-0">
-              <span className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-dark-raised text-center font-serif text-sm font-semibold leading-tight text-accent shadow-card">
+            <div key={fase.num} className="reveal relative flex gap-6 pl-0">
+              <span className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-dark-raised text-center font-serif text-sm font-semibold leading-tight text-accent-soft shadow-card-lift">
                 Fase
                 <br />
                 {fase.num}
@@ -62,7 +61,7 @@ export default function Recorrido() {
                 <p className="text-xs font-semibold uppercase tracking-widest text-accent">
                   {fase.hito}
                 </p>
-                <h3 className="mt-2 font-serif text-2xl font-light">{fase.title}</h3>
+                <h3 className="mt-2 font-serif text-2xl font-medium">{fase.title}</h3>
                 <ul className="mt-3 space-y-2">
                   {fase.objetivos.map((objetivo) => (
                     <li

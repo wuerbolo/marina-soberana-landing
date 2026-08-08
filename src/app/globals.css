@@ -22,20 +22,41 @@
   body, generous whitespace) so the two feel like the same family.
 
   How the palette maps to roles (reworked 2026-08-04, contrast-checked):
-  - 60/30/10: Crema is the page base (warm off-white), Lila Nebulosa is the
-    alternate section panel (brand, unchanged from the prior palette),
-    Dorado is reserved for CTAs and small accents.
+  - 60/30/10: Crema is the page base (warm off-white), Dorado is reserved for
+    CTAs and small accents, and the deep purples carry the dark sections.
   - Dorado (#C8A24A) on Crema/white passes for large accent numbers but is
     borrowed as a CTA fill, not body text — foreground text on top of it
     still reaches 6.46:1 (AA).
   - Muted TEXT uses --muted (#5C4A6B), a DERIVED shade between Morado and
-    Crema: 7.37:1 on Crema, 5.50:1 on Lila Nebulosa — both AA.
+    Crema: 7.37:1 on Crema — AA.
   - Morado Oscuro doubles as the dark section background (testimonials):
     Crema text on it is 14.45:1, the derived on-dark-muted lilac
     (#F0E6F7) is 12.87:1; cards use --dark-raised (Morado, #4A2F5E),
     where those same text colors stay 10.49:1 / 9.34:1.
   - --surface is plain white, matching the concept's raised cards on
     light sections; Morado Oscuro text on it is 15.56:1.
+
+  ── DESIGN PASS, 2026-08-08 (branch design/landing-visual-pass) ──────────
+  The build read flat and dim next to Marina's own soberana-webv3 mockup.
+  Four causes, all fixed at this layer rather than in components:
+
+  1. --shadow-cta used a NEGATIVE spread (-10px), which shrinks a shadow to
+     smaller than the element casting it. The gold CTA therefore had no glow
+     at all — the single biggest reason it looked "dimmed" beside Marina's,
+     whose button carries a wide positive-spread glow in its own gold.
+  2. --panel was Lila Nebulosa, a COOL grey-lilac used as a full-section
+     background against a WARM cream base. Two whole sections of the page
+     went muddy. Marina's mockup contains no lilac at all: it alternates
+     cream / white / deep purple and lets gold do the accenting. --panel is
+     now a warm deepened cream; Lila Nebulosa stays defined below (it is an
+     official colour and --lila-mist still derives from it) but no longer
+     backs a section.
+  3. The dark end stopped at Morado Oscuro. Marina's hero runs deeper, to a
+     near-black plum, which is what gives the gold something to glow against.
+     --noche is that shade, taken from her mockup's gradient stop.
+  4. No texture and no light. Flat fills at this size read as cheap; the
+     grain overlay and the gold halo below are what make a large colour
+     field look like a printed surface instead of a filled rectangle.
 */
 :root {
   /* Official colors, verbatim */
@@ -43,25 +64,31 @@
   --morado: #4a2f5e;
   --morado-oscuro: #2e1c3d;
   --dorado: #c8a24a;
-  --dorado-claro: #e8d5a3; /* reserved: not yet wired to a role — no current component needs a gold accent-on-dark label (the concept uses it for eyebrows/badges/credential numbers) */
+  --dorado-claro: #e8d5a3;
   --crema: #faf6f0;
 
   /* Derived shades (documented above — keep this list short) */
-  --dorado-deep: #b3903f; /* Dorado darkened, hover */
+  --dorado-deep: #b3903f; /* Dorado darkened, hover on light */
+  --dorado-viva: #d8ac57; /* Dorado lifted, hover on dark — from Marina's webv3 CTA hover */
   --morado-ink: #5c4a6b; /* Morado → Crema, legible muted text */
   --lila-mist: #f0e6f7; /* Light lavender, muted text on dark sections */
   --crema-deep: #e8ddd0; /* Crema darkened, borders — from the concept's dividers */
+  --crema-warm: #f4ece1; /* Crema deepened, the third light section tone */
+  --noche: #1f1326; /* Near-black plum — deepest stop of Marina's webv3 hero */
 
   /* Semantic roles (components must only use these, via Tailwind tokens) */
   --background: var(--crema);
   --surface: #ffffff;
-  --panel: var(--lila-nebulosa);
+  --panel: var(--crema-warm);
   --foreground: var(--morado-oscuro);
   --muted: var(--morado-ink);
   --soft: var(--dorado);
   --line: var(--crema-deep);
   --accent: var(--dorado);
   --accent-hover: var(--dorado-deep);
+  --accent-bright: var(--dorado-viva);
+  --accent-soft: var(--dorado-claro);
+  --night: var(--noche);
   --dark: var(--morado-oscuro);
   --dark-raised: var(--morado);
   --on-dark: var(--crema);
@@ -78,6 +105,9 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-soft: var(--accent-soft);
+  --color-night: var(--night);
   --color-dark: var(--dark);
   --color-dark-raised: var(--dark-raised);
   --color-on-dark: var(--on-dark);
@@ -86,7 +116,14 @@
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
   /* Morado-tinted soft shadow for raised cards (shadow-card utility) */
   --shadow-card: 0 10px 30px -14px rgb(46 28 61 / 0.25);
-  --shadow-cta: 0 12px 28px -10px rgb(200 162 74 / 0.55);
+  --shadow-card-lift: 0 22px 48px -22px rgb(46 28 61 / 0.35);
+  /*
+    Gold glow for the CTA. POSITIVE spread on purpose: the light has to escape
+    from behind the button. The stacked second layer is the tight contact
+    shadow that keeps it from floating.
+  */
+  --shadow-cta: 0 10px 30px 0 rgb(200 162 74 / 0.38), 0 2px 8px 0 rgb(200 162 74 / 0.22);
+  --shadow-cta-hover: 0 16px 40px 0 rgb(200 162 74 / 0.5), 0 3px 10px 0 rgb(200 162 74 / 0.3);
 }
 
 body {
@@ -99,6 +136,164 @@ body {
 
 .font-serif {
   font-family: var(--font-serif);
+  /*
+    Fraunces is a variable font. Its optical-size axis is what makes a display
+    line look drawn rather than scaled up: high opsz thins the hairlines and
+    opens the counters. Set once here so every heading gets it without each
+    component remembering to.
+  */
+  font-variation-settings: "opsz" 96, "SOFT" 20;
+  letter-spacing: -0.015em;
+}
+
+/*
+  ── Surfaces ────────────────────────────────────────────────────────────
+
+  Grain. A large flat colour field is the thing that reads as "template" at a
+  glance; a fraction of a percent of noise over it reads as paper or film.
+  Inline SVG feTurbulence so it costs one repeated 120px tile and no request.
+  Sits in ::after at low opacity, pointer-events off, aria-hidden by nature.
+*/
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+/* The hero's night sky: three purple stops, never fading to a light tone. */
+.bg-night-gradient {
+  background-image: linear-gradient(
+    168deg,
+    var(--noche) 0%,
+    var(--morado-oscuro) 48%,
+    var(--morado) 100%
+  );
+}
+
+/*
+  Gold halo. The single light source on the dark sections — a soft radial
+  bloom behind the headline that the CTA then appears lit by. Purely
+  decorative, so it is placed by an aria-hidden div in the component.
+*/
+.halo-gold {
+  background-image: radial-gradient(
+    circle,
+    rgb(232 213 163 / 0.22) 0%,
+    rgb(232 213 163 / 0.06) 45%,
+    rgb(232 213 163 / 0) 70%
+  );
+}
+
+/*
+  Gold rule that opens a section's heading block. Held at a hairline, but solid
+  across its middle third — a rule that fades the whole way across reads as a
+  smudge at this width rather than as a deliberate mark.
+*/
+.rule-gold {
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgb(200 162 74 / 0),
+    rgb(200 162 74 / 0.9) 32%,
+    rgb(200 162 74 / 0.9) 68%,
+    rgb(200 162 74 / 0)
+  );
+}
+
+/*
+  ── Call to action ──────────────────────────────────────────────────────
+
+  One class, because the same pill is rendered in five places (hero, final,
+  sticky bar, qualifier result, funnel submit) and four of them had drifted
+  into slightly different copies of the same utility string.
+
+  Sentence case, not uppercase-with-wide-tracking: at 15-17px the uppercase
+  version was optically smaller and quieter than the plain one, which is the
+  other half of why the button read as dim.
+  min-height 56px clears the 44px touch-target floor with room to spare.
+
+  In `@layer components` on purpose: Tailwind's utilities layer is ordered after
+  it, so a call site can still trim a padding or a font size with a utility
+  class. Unlayered, this rule would have quietly beaten every utility next to
+  it — unlayered CSS outranks anything in a layer.
+*/
+@layer components {
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 56px;
+    padding: 0.875rem 2rem;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-align: center;
+    box-shadow: var(--shadow-cta);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .btn-cta:hover {
+    background-color: var(--accent-bright);
+    box-shadow: var(--shadow-cta-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0);
+  }
+
+  .btn-cta:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Full-bleed variant — the hero and the funnel want the pill to span. */
+  .btn-cta-block {
+    display: flex;
+    width: 100%;
+  }
+}
+
+/*
+  ── Motion ──────────────────────────────────────────────────────────────
+
+  Scroll-driven reveals with no JavaScript and no hydration cost, via
+  animation-timeline: view(). Guarded twice over: the element's resting state
+  is the VISIBLE one, and the animation only attaches where the feature and
+  the user's motion preference both allow it. A browser without support (or a
+  visitor who asked for less motion) simply sees the finished page.
+*/
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 26%;
+    }
+  }
 }
 
 @keyframes fade-up {

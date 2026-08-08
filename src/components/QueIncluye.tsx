@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   {
     title: "Clases grabadas",
@@ -39,22 +41,23 @@ const ITEMS = [
 
 export default function QueIncluye() {
   return (
-    <section className="bg-dark text-on-dark">
-      <div className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Qué incluye el máster Soberana
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-on-dark-muted">
-          Todo lo que necesitas para convertirte en terapeuta de Registros Akáshicos y
-          empezar a ayudar a personas en menos de 6 meses. Manuales, audios y prácticas
-          exclusivos de esta formación: no los vas a encontrar en ningún otro curso.
-        </p>
+    <section className="grain relative overflow-hidden bg-dark text-on-dark">
+      <div
+        aria-hidden
+        className="halo-gold pointer-events-none absolute -top-1/4 left-1/2 aspect-square w-[min(900px,160%)] -translate-x-1/2"
+      />
+      <div className="relative mx-auto max-w-4xl px-6 py-20 md:py-28">
+        <SectionHeading
+          tone="dark"
+          title="Qué incluye el máster Soberana"
+          subtitle="Todo lo que necesitas para convertirte en terapeuta de Registros Akáshicos y empezar a ayudar a personas en menos de 6 meses. Manuales, audios y prácticas exclusivos de esta formación: no los vas a encontrar en ningún otro curso."
+        />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        <div className="reveal mt-12 grid gap-5 sm:grid-cols-2">
           {ITEMS.map((item, i) => (
             <div
               key={item.title}
-              className="flex gap-4 rounded-2xl border border-accent/25 p-5"
+              className="flex gap-4 rounded-2xl border border-accent/25 bg-dark-raised/35 p-5 transition-colors hover:border-accent/55"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent font-serif text-base font-semibold text-dark-raised">
                 {i + 1}

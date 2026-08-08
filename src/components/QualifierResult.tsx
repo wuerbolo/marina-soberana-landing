@@ -4,9 +4,6 @@ import { TUS_GUIAS_URL, whatsappLink } from "@/lib/links";
 // The qualifier's two closing screens. Which one a visitor sees is decided by
 // the server's response to the single submission — never here.
 
-const CTA_CLASS =
-  "inline-flex rounded-full bg-accent px-9 py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-all hover:-translate-y-0.5 hover:bg-accent-hover";
-
 /**
  * She cleared all three gates. This is the only WhatsApp link on the site
  * (docs/adr/0002) — every other route to Marina goes through these questions.
@@ -15,7 +12,7 @@ export function CallScreen({ fullName }: { fullName: string }) {
   return (
     <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
       <p className="text-xs uppercase tracking-[0.3em] text-accent">Tu siguiente paso</p>
-      <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
+      <h2 className="mt-4 font-serif text-3xl font-medium leading-snug md:text-4xl">
         Hablemos por WhatsApp.
       </h2>
       <p className="mt-5 text-base leading-relaxed text-muted">
@@ -28,7 +25,7 @@ export function CallScreen({ fullName }: { fullName: string }) {
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event="cta-whatsapp"
-          className={CTA_CLASS}
+          className="btn-cta"
         >
           Escríbeme por WhatsApp
         </a>
@@ -58,7 +55,7 @@ export function GuiasScreen({
   return (
     <div className="fade-up mx-auto max-w-xl px-6 py-20 text-center md:py-28">
       <p className="text-xs uppercase tracking-[0.3em] text-accent">Tu siguiente paso</p>
-      <h2 className="mt-4 font-serif text-3xl font-light leading-snug md:text-4xl">
+      <h2 className="mt-4 font-serif text-3xl font-medium leading-snug md:text-4xl">
         Empieza por Tus Guías Te Hablan.
       </h2>
       {quotedPrompt && (
@@ -66,7 +63,7 @@ export function GuiasScreen({
           <figcaption className="text-[11px] uppercase tracking-wider text-muted">
             Me has dicho que no a esto
           </figcaption>
-          <blockquote className="mt-3 font-serif text-lg font-light leading-snug">
+          <blockquote className="mt-3 font-serif text-lg leading-snug">
             {quotedPrompt}
           </blockquote>
         </figure>
@@ -83,7 +80,7 @@ export function GuiasScreen({
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event="cta-tus-guias"
-          className={CTA_CLASS}
+          className="btn-cta"
         >
           Ver Tus Guías Te Hablan
         </a>

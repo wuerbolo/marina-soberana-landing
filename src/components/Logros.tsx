@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   <>
     <strong className="font-medium text-foreground">
@@ -43,17 +45,15 @@ export default function Logros() {
   return (
     <section>
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Esto es lo que vas a lograr
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          En 6 meses, paso a paso, con objetivos claros en cada etapa.
-        </p>
+        <SectionHeading
+          title="Esto es lo que vas a lograr"
+          subtitle="En 6 meses, paso a paso, con objetivos claros en cada etapa."
+        />
 
-        <ol className="mt-12 divide-y divide-line">
+        <ol className="reveal mt-12 divide-y divide-line">
           {ITEMS.map((item, i) => (
             <li key={i} className="flex gap-5 py-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dark-raised font-serif text-lg font-semibold text-accent">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dark-raised font-serif text-lg font-semibold text-accent-soft shadow-card">
                 {i + 1}
               </span>
               <p className="pt-1.5 text-base leading-relaxed text-foreground/90">{item}</p>

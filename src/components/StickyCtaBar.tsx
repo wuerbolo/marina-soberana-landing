@@ -33,15 +33,15 @@ export default function StickyCtaBar() {
         sit on top of the footer links.
       */}
       <div aria-hidden className="h-24" />
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-accent/25 bg-dark/95 px-3 py-2.5 backdrop-blur-md sm:px-5">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-accent/30 bg-night/95 px-3 py-2.5 backdrop-blur-md sm:px-5">
         <div className="mx-auto flex max-w-3xl items-center gap-3">
-          <span className="min-w-0 shrink truncate text-[11px] font-medium uppercase tracking-widest text-accent">
+          <span className="min-w-0 shrink truncate text-[11px] font-medium uppercase tracking-widest text-accent-soft">
             Plazas limitadas
           </span>
           <Link
             href="/aplicar"
             data-umami-event="cta-sticky-click"
-            className="flex min-h-[50px] flex-1 items-center justify-center rounded-full bg-accent px-5 py-3 text-center text-sm font-medium text-foreground transition-colors hover:bg-accent-hover"
+            className="btn-cta min-h-[50px] flex-1 px-5 py-3 text-sm"
           >
             Quiero saber si Soberana es para mí →
           </Link>

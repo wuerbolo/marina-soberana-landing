@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   { label: "Modalidad", valor: "Online" },
   { label: "Duración", valor: "6 meses" },
@@ -11,15 +13,13 @@ export default function Detalles() {
   return (
     <section>
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Detalles del máster
-        </h2>
+        <SectionHeading title="Detalles del máster" />
 
-        <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
+        <div className="reveal mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {ITEMS.map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-line bg-surface px-4 py-6 text-center"
+              className="rounded-2xl border border-line bg-surface px-4 py-6 text-center shadow-card transition-colors hover:border-accent/45"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-accent">
                 {item.label}

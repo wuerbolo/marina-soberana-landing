@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   {
     question: "¿Yo voy a saber canalizar?",
@@ -28,20 +30,18 @@ const ITEMS = [
 
 export default function AntesDeDecidir() {
   return (
-    <section className="bg-surface">
+    <section className="bg-panel">
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Antes de decidir
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Las dudas más frecuentes de quienes están valorando entrar.
-        </p>
+        <SectionHeading
+          title="Antes de decidir"
+          subtitle="Las dudas más frecuentes de quienes están valorando entrar."
+        />
 
-        <div className="mt-12 space-y-4">
+        <div className="reveal mt-12 space-y-4">
           {ITEMS.map((item) => (
             <details
               key={item.question}
-              className="group rounded-2xl border border-line bg-background open:shadow-card"
+              className="group rounded-2xl border border-line bg-surface transition-colors hover:border-accent/40 open:shadow-card"
             >
               <summary className="flex cursor-pointer list-none items-center gap-4 px-6 py-5 font-serif text-lg font-medium marker:content-none">
                 <span className="flex-1">{item.question}</span>

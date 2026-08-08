@@ -1,3 +1,4 @@
+import SectionHeading from "./SectionHeading";
 import TestimoniosGrid, { type TestimonioScreenshot } from "./TestimoniosGrid";
 
 // The WhatsApp screenshots Marina supplied, in soberana-webv3's curation for
@@ -69,14 +70,12 @@ const TESTIMONIALS: readonly TestimonioScreenshot[] = [
 
 export default function TestimoniosAlumnas() {
   return (
-    <section className="bg-panel">
+    <section className="bg-surface">
       <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Lo que dicen las alumnas de Soberana
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Mensajes reales de alumnas durante y después de la formación.
-        </p>
+        <SectionHeading
+          title="Lo que dicen las alumnas de Soberana"
+          subtitle="Mensajes reales de alumnas durante y después de la formación."
+        />
 
         <TestimoniosGrid items={TESTIMONIALS} />
       </div>

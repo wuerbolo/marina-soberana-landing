@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   "Quieres aprender a canalizar mensajes de los guías profundos, concretos y que de verdad generen transformación, evolución y sanación en tus futuros clientes.",
   "Te da miedo cobrar porque sientes que no aportas suficiente.",
@@ -11,19 +13,17 @@ export default function ParaTi() {
   return (
     <section>
       <div className="mx-auto max-w-2xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Soberana es tu máster si…
-        </h2>
+        <SectionHeading title="Soberana es tu máster si…" />
 
-        <ul className="mt-10 flex flex-col">
+        <ul className="reveal mt-10 flex flex-col">
           {ITEMS.map((item, i) => (
             <li
               key={item}
-              className={`flex gap-3.5 py-4 text-base font-light leading-relaxed text-foreground/90 ${
+              className={`flex gap-3.5 py-4 text-base leading-relaxed text-foreground/90 ${
                 i < ITEMS.length - 1 ? "border-b border-line" : ""
               }`}
             >
-              <span className="shrink-0 text-sm text-accent">✦</span>
+              <span className="mt-0.5 shrink-0 text-sm text-accent">✦</span>
               <span>{item}</span>
             </li>
           ))}

@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   {
     title:
@@ -46,7 +48,13 @@ const ITEMS = [
 ];
 
 function Tag({ tone, children }: { tone: "panel" | "accent" | "muted"; children: string }) {
-  const bg = { panel: "bg-panel", accent: "bg-accent/20", muted: "bg-foreground/10" }[tone];
+  // On the warm-cream section the old `bg-panel` tag was invisible against its
+  // own background, so the neutral tag now carries a line instead of a fill.
+  const bg = {
+    panel: "border border-line bg-background",
+    accent: "bg-accent/25",
+    muted: "bg-foreground/10",
+  }[tone];
   return (
     <span
       className={`inline-block rounded-full ${bg} px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground`}
@@ -60,19 +68,16 @@ export default function Enfoque() {
   return (
     <section className="bg-panel">
       <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Mi enfoque
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Un método construido en +2 años formando terapeutas, con más de 60 alumnas que
-          ya lo han recorrido.
-        </p>
+        <SectionHeading
+          title="Mi enfoque"
+          subtitle="Un método construido en +2 años formando terapeutas, con más de 60 alumnas que ya lo han recorrido."
+        />
 
-        <div className="mt-12 space-y-4">
+        <div className="reveal mt-12 space-y-4">
           {ITEMS.map((item, i) => (
             <details
               key={item.title}
-              className="group rounded-2xl border border-line bg-surface open:shadow-card"
+              className="group rounded-2xl border border-line bg-surface transition-shadow hover:border-accent/40 open:shadow-card"
             >
               <summary className="flex cursor-pointer list-none items-center gap-4 px-6 py-5 font-serif text-lg font-medium marker:content-none">
                 <span className="shrink-0 text-sm font-sans font-semibold text-accent">

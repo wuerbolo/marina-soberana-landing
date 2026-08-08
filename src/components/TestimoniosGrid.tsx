@@ -35,7 +35,7 @@ export default function TestimoniosGrid({
           width={t.width}
           height={t.height}
           sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
-          className="mb-5 w-full break-inside-avoid rounded-2xl shadow-card"
+          className="mb-5 w-full break-inside-avoid rounded-2xl border border-line shadow-card"
         />
       ))}
     </div>

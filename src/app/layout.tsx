@@ -22,9 +22,14 @@ const inter = Inter({
   display: "swap",
 });
 
+// Fraunces is variable on more than weight. `opsz` (optical size) is what lets a
+// display line be drawn for display rather than scaled up from text sizes, and
+// `SOFT` rounds the terminals a touch — both are set in globals.css `.font-serif`
+// and have to be requested here or the served file will not carry the axes.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
+  axes: ["SOFT", "opsz"],
   display: "swap",
 });
 

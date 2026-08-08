@@ -4,17 +4,29 @@ export default function SobreMi() {
   return (
     <section className="bg-surface">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-12 px-6 py-20 md:flex-row md:py-28">
-        <div className="w-48 shrink-0 md:w-60">
+        {/*
+          The arched frame is Marina's own shape from the webv3 mockup — square
+          shoulders, a deep sweep at the foot. The offset gold outline behind it
+          is what stops a lone portrait from floating on a white field.
+        */}
+        <div className="reveal relative w-48 shrink-0 md:w-60">
+          <div
+            aria-hidden
+            className="absolute -bottom-3 -right-3 h-full w-full rounded-t-lg rounded-b-[120px] border border-accent/45"
+          />
           <Image
             src="/images/marina.jpg"
             alt="Marina, maestra de Registros Akáshicos"
             width={480}
             height={853}
-            className="w-full rounded-2xl object-cover shadow-card"
+            className="relative w-full rounded-t-lg rounded-b-[120px] object-cover shadow-card-lift"
           />
         </div>
-        <div className="text-center md:text-left">
-          <h2 className="font-serif text-3xl font-light tracking-tight md:text-4xl">
+        <div className="reveal text-center md:text-left">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
+            Quién te acompaña
+          </p>
+          <h2 className="mt-4 font-serif text-3xl font-medium tracking-tight md:text-4xl">
             Hola, ¡soy Marina!
           </h2>
           <div className="mt-5 space-y-4 text-base leading-relaxed text-foreground/90">
