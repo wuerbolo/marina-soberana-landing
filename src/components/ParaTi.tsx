@@ -11,19 +11,19 @@ const ITEMS = [
 
 export default function ParaTi() {
   return (
-    <section>
-      <div className="mx-auto max-w-2xl px-6 py-20 md:py-28">
+    <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[640px]">
         <SectionHeading title="Soberana es tu máster si…" />
 
-        <ul className="reveal mt-10 flex flex-col">
+        <ul className="reveal flex flex-col">
           {ITEMS.map((item, i) => (
             <li
               key={item}
-              className={`flex gap-3.5 py-4 text-base leading-relaxed text-foreground/90 ${
+              className={`t-list flex gap-3.5 text-pretty py-[15px] text-body ${
                 i < ITEMS.length - 1 ? "border-b border-line" : ""
               }`}
             >
-              <span className="mt-0.5 shrink-0 text-sm text-accent">✦</span>
+              <span className="shrink-0 text-[15px] leading-[1.75] text-accent">✦</span>
               <span>{item}</span>
             </li>
           ))}

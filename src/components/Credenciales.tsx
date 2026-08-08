@@ -11,22 +11,20 @@ const ITEMS = [
 
 export default function Credenciales() {
   return (
-    <section className="grain relative overflow-hidden bg-night-gradient text-on-dark">
-      <div
-        aria-hidden
-        className="halo-gold pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[min(900px,160%)] -translate-x-1/2 -translate-y-1/2"
-      />
-      <div className="relative mx-auto max-w-4xl px-6 py-16 md:py-20">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 text-center md:grid-cols-4">
-          {ITEMS.map((item) => (
-            <div key={item.label} className="reveal">
-              <p className="font-serif text-5xl font-semibold leading-none text-accent-soft md:text-6xl">
-                {item.num}
-              </p>
-              <p className="mt-3 text-sm leading-snug text-on-dark-muted">{item.label}</p>
-            </div>
-          ))}
-        </div>
+    // Flat, not the hero's gradient: this is a thin band between two light
+    // sections, and a gradient at this height only reads as a smudge.
+    <section className="bg-dark px-[clamp(20px,5vw,40px)] py-[clamp(36px,7vw,56px)] text-on-dark">
+      <div className="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[clamp(22px,4vw,26px)] text-center">
+        {ITEMS.map((item) => (
+          <div key={item.label} className="reveal">
+            <p className="font-serif text-[clamp(34px,8vw,42px)] font-bold leading-none text-accent-soft">
+              {item.num}
+            </p>
+            <p className="mt-2 text-[12.5px] font-light leading-[1.45] text-on-dark-quiet">
+              {item.label}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

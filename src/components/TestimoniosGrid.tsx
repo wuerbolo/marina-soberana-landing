@@ -26,7 +26,10 @@ export default function TestimoniosGrid({
   items: readonly TestimonioScreenshot[];
 }) {
   return (
-    <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3">
+    // `columns: 260px 3` rather than stepped column counts: the browser fits as
+    // many 260px-wide columns as there is room for, up to three, so the layout
+    // reflows continuously instead of jumping at two breakpoints.
+    <div className="[columns:260px_3] gap-3.5">
       {items.map((t) => (
         <Image
           key={t.src}
@@ -35,7 +38,7 @@ export default function TestimoniosGrid({
           width={t.width}
           height={t.height}
           sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
-          className="mb-5 w-full break-inside-avoid rounded-2xl border border-line shadow-card"
+          className="mb-3.5 block w-full break-inside-avoid rounded-xl shadow-card"
         />
       ))}
     </div>

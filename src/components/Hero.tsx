@@ -1,16 +1,23 @@
 import Link from "next/link";
 
+/*
+  Kept deliberately short. These are scanned, not read — five of them stacked in
+  a wrap is a paragraph in disguise, and the reference's own chips run two or
+  three words each. The detail that got cut ("conmigo + tutora", "para crear tus
+  acompañamientos") is stated in full further down the page, where there is room
+  for it.
+*/
 const META = [
   "Online · 6 meses",
   "Clases en directo",
-  "Acompañamiento semanal: conmigo + tutora",
-  "Manuales descargables para crear tus acompañamientos",
-  "Prácticas únicas de este máster",
+  "Acompañamiento semanal",
+  "Manuales descargables",
+  "Prácticas exclusivas",
 ];
 
 export default function Hero() {
   return (
-    <section className="grain relative overflow-hidden bg-night-gradient text-on-dark">
+    <section className="relative overflow-hidden bg-night-gradient px-[clamp(20px,5vw,40px)] pb-[clamp(56px,8vw,88px)] pt-[clamp(48px,9vw,96px)] text-on-dark">
       {/*
         The page's only light source: a gold bloom behind the headline that the
         CTA below then reads as lit by. Pulled up out of frame so only the lower
@@ -18,36 +25,51 @@ export default function Hero() {
       */}
       <div
         aria-hidden
-        className="halo-gold pointer-events-none absolute -top-[28%] left-1/2 aspect-square w-[min(820px,150%)] -translate-x-1/2"
+        className="halo-gold pointer-events-none absolute -top-[24%] left-1/2 aspect-square w-[min(760px,150%)] -translate-x-1/2"
       />
-      <div className="relative mx-auto max-w-3xl px-6 pb-20 pt-20 text-center md:pb-28 md:pt-28">
-        <p className="text-xs font-medium uppercase tracking-[0.35em] text-accent-soft">
-          Máster de Registros Akáshicos
-        </p>
-        <h1 className="mt-5 font-serif text-[2rem] font-semibold leading-[1.14] tracking-tight sm:text-4xl md:text-5xl">
+      {/*
+        Padding lives on the section, not here: this div's only job is the
+        760px measure. Padding and max-width on the same box double-count once
+        the max-width binds — the box ends up narrower than 760px, not equal to
+        it, because the padding eats into the space the max-width already
+        capped. That was quietly narrowing the hero (and every other section)
+        below what the reference specifies.
+      */}
+      <div className="relative mx-auto flex max-w-[760px] flex-col items-center gap-[clamp(18px,3vw,26px)] text-center">
+        <p className="t-eyebrow text-accent-dim">Máster de Registros Akáshicos</p>
+        <h1 className="h-display text-pretty">
           Aprende a canalizar Registros Akáshicos{" "}
           <em className="italic text-accent-soft">como un terapeuta profesional</em> — sin
           sentir que te quedas en blanco o que te lo inventas
         </h1>
-        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-on-dark-muted md:text-xl">
+        <p className="t-lead max-w-[620px] text-pretty text-on-dark-muted">
           Soberana no es un curso más de Registros Akáshicos: es el máster de Registros
           Akáshicos + terapias emocionales de 6 meses con el que te formas en una nueva
           profesión, con material 100% exclusivo de esta formación, para crear
           acompañamientos con los que tus clientes vean resultados desde el día 1.
         </p>
-        <div className="mx-auto mt-11 max-w-sm">
-          <Link href="/aplicar" data-umami-event="cta-hero-click" className="btn-cta btn-cta-block">
+        <div className="mt-1 flex w-full flex-col items-center gap-3">
+          <Link
+            href="/aplicar"
+            data-umami-event="cta-hero-click"
+            className="btn-cta btn-cta-block max-w-[400px]"
+          >
             Quiero saber si es para mí
           </Link>
-          <p className="mt-4 text-xs font-medium uppercase tracking-widest text-accent-soft">
+          <span className="text-[12.5px] font-semibold uppercase tracking-[0.12em] text-accent-dim">
             3 minutos · sin compromiso
-          </p>
+          </span>
         </div>
-        <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+        {/*
+          Bigger and bolder than the reference's own chips on purpose — legibility
+          call from the client, not a fidelity slip. At the reference's size these
+          read as a thin grey smudge under the CTA rather than as scannable facts.
+        */}
+        <div className="mt-[clamp(10px,3vw,20px)] flex flex-wrap justify-center gap-2.5">
           {META.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-accent/35 px-4 py-2 text-xs tracking-wide text-accent-soft"
+              className="rounded-full border border-accent-soft/45 px-[18px] py-[9px] text-[15px] font-medium tracking-[0.01em] text-accent-soft"
             >
               {item}
             </span>

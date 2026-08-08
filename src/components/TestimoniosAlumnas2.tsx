@@ -59,8 +59,8 @@ const TESTIMONIALS: readonly TestimonioScreenshot[] = [
 
 export default function TestimoniosAlumnas2() {
   return (
-    <section className="bg-surface">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+    <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[1000px]">
         <SectionHeading
           title="Más historias de transformación"
           subtitle="Alumnas que ya están aplicando lo aprendido en Soberana."

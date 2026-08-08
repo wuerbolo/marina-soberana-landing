@@ -43,20 +43,20 @@ const ITEMS = [
 
 export default function Logros() {
   return (
-    <section>
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
+    <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[720px]">
         <SectionHeading
           title="Esto es lo que vas a lograr"
           subtitle="En 6 meses, paso a paso, con objetivos claros en cada etapa."
         />
 
-        <ol className="reveal mt-12 divide-y divide-line">
+        <ol className="reveal divide-y divide-line">
           {ITEMS.map((item, i) => (
-            <li key={i} className="flex gap-5 py-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dark-raised font-serif text-lg font-semibold text-accent-soft shadow-card">
+            <li key={i} className="flex gap-4 py-5">
+              <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-dark-mid font-serif text-[19px] font-bold text-accent-soft">
                 {i + 1}
               </span>
-              <p className="pt-1.5 text-base leading-relaxed text-foreground/90">{item}</p>
+              <p className="t-body pt-[5px] text-pretty text-body">{item}</p>
             </li>
           ))}
         </ol>

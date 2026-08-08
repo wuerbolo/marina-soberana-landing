@@ -70,8 +70,8 @@ const TESTIMONIALS: readonly TestimonioScreenshot[] = [
 
 export default function TestimoniosAlumnas() {
   return (
-    <section className="bg-surface">
-      <div className="mx-auto max-w-5xl px-6 py-20 md:py-28">
+    <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[1000px]">
         <SectionHeading
           title="Lo que dicen las alumnas de Soberana"
           subtitle="Mensajes reales de alumnas durante y después de la formación."

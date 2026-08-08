@@ -1,12 +1,14 @@
 /**
- * The heading block every section on the page opens with: a short gold rule, a
- * serif title, and an optional line of subtitle underneath.
+ * The heading block every section on the page opens with: a serif title and an
+ * optional line of subtitle underneath.
  *
- * Extracted during the 2026-08-08 design pass. Nine sections had hand-copied
- * the same three elements, and the copies had already drifted apart in weight
- * and spacing — which is exactly the kind of drift that makes a page read as
- * assembled rather than designed. Changing the rhythm of the whole page is now
- * one edit here.
+ * It owns the gap down to the section's content as well as the gap between its
+ * own two lines, so section rhythm is one edit here rather than a `mt-*` at
+ * every call site — which is what had already drifted apart once.
+ *
+ * The short gold rule that used to sit above the title is gone: Marina's
+ * reference opens every section with the title alone, and against 300-weight
+ * copy the rule was the loudest mark on the page.
  */
 export default function SectionHeading({
   title,
@@ -20,15 +22,14 @@ export default function SectionHeading({
   tone?: "light" | "dark";
 }) {
   return (
-    <div className="reveal text-center">
-      <div aria-hidden className="rule-gold mx-auto mb-7 w-16" />
-      <h2 className="font-serif text-3xl font-medium leading-[1.15] tracking-tight md:text-4xl">
+    <div className="reveal mb-[clamp(26px,5vw,42px)] text-center">
+      <h2 className={`h-section text-balance ${tone === "dark" ? "text-on-dark" : ""}`}>
         {title}
       </h2>
       {subtitle && (
         <p
-          className={`mx-auto mt-4 max-w-xl text-base leading-relaxed ${
-            tone === "dark" ? "text-on-dark-muted" : "text-muted"
+          className={`t-sub mx-auto mt-3 max-w-[520px] text-pretty ${
+            tone === "dark" ? "text-on-dark-muted" : ""
           }`}
         >
           {subtitle}
