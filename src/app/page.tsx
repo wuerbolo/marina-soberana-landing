@@ -2,7 +2,6 @@ import AntesDeDecidir from "@/components/AntesDeDecidir";
 import Credenciales from "@/components/Credenciales";
 import Detalles from "@/components/Detalles";
 import Enfoque from "@/components/Enfoque";
-import FinalCTA from "@/components/FinalCTA";
 import Hero from "@/components/Hero";
 import Inversion from "@/components/Inversion";
 import Logros from "@/components/Logros";
@@ -23,9 +22,8 @@ export default function Home() {
       <TestimoniosAlumnas />
       <Detalles />
       <TestimoniosAlumnas2 />
-      <Inversion />
       <AntesDeDecidir />
-      <FinalCTA />
+      <Inversion />
     </main>
   );
 }

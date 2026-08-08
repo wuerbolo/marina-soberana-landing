@@ -21,7 +21,8 @@ import { useEffect, useState } from "react";
  * ADR-0001 (update 2026-08-07) exactly because it names no count. The mockup's
  * "Últimas 2 plazas" is what that ADR still rules out.
  *
- * Slides itself away once FinalCTA's card (#final-cta) is on screen — at that
+ * Slides itself away once the closing card (#final-cta, the Inversion section)
+ * is on screen — at that
  * point this bar is a second copy of the same ask sitting right on top of the
  * first one. Re-appears only if the visitor scrolls back up above that card,
  * not while they're still below it reading the footer.
@@ -65,7 +66,7 @@ export default function StickyCtaBar() {
       */}
       <div aria-hidden className="h-24 bg-dark" />
       <div
-        className={`fixed inset-x-0 bottom-0 z-40 border-t border-accent-soft/25 bg-night/95 px-[clamp(12px,4vw,20px)] pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-md transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-x-0 bottom-0 z-40 border-t border-accent-soft/25 bg-night px-[clamp(12px,4vw,20px)] pb-[calc(10px+env(safe-area-inset-bottom))] pt-2.5 transition-transform duration-300 ease-in-out ${
           hidden ? "translate-y-full" : "translate-y-0"
         }`}
       >

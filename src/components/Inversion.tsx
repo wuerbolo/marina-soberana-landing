@@ -10,8 +10,11 @@ import Link from "next/link";
  * question lands pre-framed; the exact figure still lives in the qualifier
  * and the call. CONTEXT.md's deflection entry carries the same update.
  *
- * Same card shape as FinalCTA but no starfield: this card argues (price,
- * guarantee), the closing card asks — the sky stays the closing signature.
+ * The page's closing card (the old "Antes de entrar, hablamos" FinalCTA was
+ * removed): it both argues (price, guarantee) and asks. It carries the
+ * starfield the hero opened under, so the page closes where it began, and the
+ * id="final-cta" the StickyCtaBar watches to slide itself away once the last
+ * ask is on screen.
  *
  * On-dark small text here is 400, not the reference's 300: thin light-on-dark
  * type is the worst case for Windows font rendering (see the .t-sub note in
@@ -19,8 +22,15 @@ import Link from "next/link";
  */
 export default function Inversion() {
   return (
-    <section className="px-[clamp(16px,5vw,40px)] pb-[clamp(56px,10vw,96px)] pt-[clamp(20px,5vw,40px)]">
-      <div className="bg-card-gradient reveal mx-auto flex max-w-[660px] flex-col items-center gap-4 rounded-[20px] px-[clamp(22px,5vw,44px)] py-[clamp(36px,7vw,56px)] text-center text-on-dark">
+    // id targeted by StickyCtaBar's IntersectionObserver — once this card is on
+    // screen, the fixed bar is a redundant second ask and slides away.
+    <section
+      id="final-cta"
+      className="px-[clamp(16px,5vw,40px)] pb-[clamp(56px,10vw,96px)] pt-[clamp(20px,5vw,40px)]"
+    >
+      <div className="bg-card-gradient reveal relative isolate mx-auto flex max-w-[660px] flex-col items-center gap-4 overflow-hidden rounded-[20px] px-[clamp(22px,5vw,44px)] py-[clamp(36px,7vw,56px)] text-center text-on-dark">
+        {/* Same sky the hero opened under — the page closes where it began. */}
+        <div aria-hidden className="starfield pointer-events-none absolute inset-0 -z-10" />
         <p className="text-[clamp(17px,4.4vw,21px)] text-accent-soft">
           Inversión desde{" "}
           <strong className="font-serif text-[clamp(24px,6vw,29px)] font-bold">
@@ -40,15 +50,13 @@ export default function Inversion() {
             cubierto.
           </p>
         </div>
-        <h3 className="mt-1.5 font-serif text-[clamp(23px,5.6vw,29px)] font-bold leading-[1.2] text-balance">
-          Reserva tu plaza y te cuento la oferta completa
-        </h3>
+
         <Link
           href="/aplicar"
           data-umami-event="cta-inversion-click"
           className="btn-cta btn-cta-block max-w-[400px]"
         >
-          Quiero saber si Soberana es para mí →
+          Quiero saber si es para mí →
         </Link>
         <small className="text-[14px] text-on-dark-quiet">Plazas limitadas</small>
       </div>

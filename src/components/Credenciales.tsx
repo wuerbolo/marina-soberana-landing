@@ -8,7 +8,7 @@ const ITEMS = [
     prefix: "",
     value: 16,
     label:
-      "alumnas acompañadas a la vez — porque cada una recibe seguimiento individual semanal conmigo y su tutora",
+      "alumnas máximo por clase, con seguimiento individual semanal",
   },
 ];
 
