@@ -45,9 +45,15 @@ export default function Logros() {
   return (
     <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
       <div className="mx-auto max-w-[720px]">
+        {/*
+          Subtitle repeats the FAQ's 15-day claim (audit §4.1) — time-to-first-
+          result is the value equation's denominator, so it earns a second
+          appearance — and drops the old "paso a paso, con objetivos claros"
+          triad (audit §5).
+        */}
         <SectionHeading
           title="Esto es lo que vas a lograr"
-          subtitle="En 6 meses, paso a paso, con objetivos claros en cada etapa."
+          subtitle="A los 15 días ya empiezas a canalizar; el resto, objetivo a objetivo durante 6 meses."
         />
 
         <ol className="reveal divide-y divide-line">

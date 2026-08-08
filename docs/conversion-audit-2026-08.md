@@ -68,7 +68,9 @@ Three problems: *"no es un curso más"* is the sentence every competitor also op
 
 > Proposed: "El máster de Registros Akáshicos + terapias emocionales de 6 meses con el que te formas en una nueva profesión: sales con tu propio método de acompañamiento y con clientes que notan el cambio desde la primera sesión. Y canalizas desde las primeras semanas."
 
-### 4.3 Vague scarcity → true capacity (Sticky bar + Detalles tile)
+### 4.3 ~~Vague scarcity → true capacity~~ — **WITHDRAWN**
+
+> **Correction (2026-08-08):** this recommendation misread ADR-0001. The ADR's 2026-08-07 update explicitly allows the vague statement and bans the number — "a vague capacity statement is fine; a number is not" — because the cap itself isn't decided (the Credenciales "16 a la vez" stat describes her follow-up model, not a committed enrollment cap), and Marina herself chose "Plazas limitadas" over a numbered label for the sticky bar. `Plazas limitadas` stays everywhere until the cap becomes real in the backend. Original text kept below for the record.
 
 - Sticky bar: `Plazas limitadas` → **`Solo 16 alumnas a la vez`**. "Plazas limitadas" is what every page on the internet says (vague scarcity reads as fake scarcity, and fake-smelling scarcity *lowers* trust). Ours is real, has a number, and has a reason — say all of it in the tightest space. Compatible with ADR-0001: capacity is programme-wide and always true; the ban is on group/deadline phrasing.
 - Detalles tile: `Plazas / Limitadas` → `Plazas / 16 a la vez`, with the note under the grid (or the tile's own second line) carrying the reason: *"porque cada alumna tiene seguimiento individual semanal"*. Hormozi: scarcity with a stated reason converts; scarcity without one pattern-matches to manipulation.
@@ -117,6 +119,15 @@ Two updates after Marina's full reference was reviewed on the client's machine:
 
 1. **The "Precio" card from the reference is now on the page** (`Inversion.tsx`, between Testimonios 2 and the FAQ, copy verbatim): "Inversión desde 2.000€", the pago único/fraccionado note, the "Mi garantía" box (2 extra months of prácticas — a Hormozi-style outcome guarantee, which §4 noted the page lacked), and its own CTA. This supersedes §6's "price stays off the page" stance by client decision: the page now states the *floor*, which pre-frames the qualifier's price disclosure instead of replacing it. CONTEXT.md's deflection entry was updated to match.
 2. **Legibility pass for Windows rendering** (reported unreadable on a real client PC — worth more than any aesthetic argument): section subtitles moved from weight 300/muted to 400/body-soft; FAQ questions unified onto `.h-card`, which itself went 600 → 700 (Cormorant's hairlines vanish below ~22px on Windows grayscale antialiasing); the 12.5px stat labels and the funnel's question text got the same one-step bump. Sizes unchanged; running copy stays 300 for now — if body text is also faint on Windows, the next step is a site-wide 300 → 400.
+
+## Addendum 2 (2026-08-08, evening) — copy pass applied
+
+With the client's approval, the PROPOSED items shipped as follows:
+
+- **Applied:** §2 metadata; §3.1 hero proof strip; §3.2 testimonial reorder (income quotes lead block 1, now titled "Alumnas que ya cobran por sus sesiones"; block 1's old header moved to block 2, replacing the AI-flagged "Más historias de transformación"); §3.3 what-happens-next 3-step inside the closing card; §4.1 speed proof (hero chip "Canalizas a los 15 días" + Logros subtitle); §4.2 hero standfirst rewrite; §4.4 headers ("Antes de entrar, hablamos", Logros subtitle triad removed).
+- **Withdrawn:** §4.3 — see the correction above; ADR-0001 bans numbered scarcity.
+- **Still pending, deliberately:** §4.5/§5 deep rewrites inside the Enfoque/Logros/ParaTi long-form copy ("resultados reales" recycling, remaining triads). That is Marina's voice — batch those with her rather than editing unilaterally.
+- Also this day (separate commits): the running-copy legibility pass (300 → 400 site-wide, benchmark acquisition.com) and the Inversión/garantía card from Marina's reference — see Addendum 1.
 
 ## Suggested order of implementation
 
