@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Jost, Cormorant_Garamond } from "next/font/google";
 import Script from "next/script";
 import SiteFooter from "@/components/SiteFooter";
@@ -40,6 +40,16 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
   display: "swap",
 });
+
+// viewport-fit=cover lets the page draw into the iPhone's safe-area insets, so
+// StickyCtaBar's `env(safe-area-inset-bottom)` padding actually resolves to the
+// home-indicator height instead of 0 — without it the fixed bottom bar sits
+// behind the home indicator / Safari chrome and reads as missing on iPhone.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 // Sells the máster, not the legacy "proceso" positioning — this is what Google
 // results, WhatsApp link previews and the browser tab show before the hero can.

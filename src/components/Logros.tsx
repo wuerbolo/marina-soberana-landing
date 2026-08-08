@@ -53,7 +53,7 @@ export default function Logros() {
         */}
         <SectionHeading
           title="Esto es lo que vas a lograr"
-          subtitle="A los 15 días ya empiezas a canalizar; el resto, objetivo a objetivo durante 6 meses."
+          subtitle="En 6 meses, paso a paso, con objetivos claros en cada etapa."
         />
 
         <ol className="reveal divide-y divide-line">

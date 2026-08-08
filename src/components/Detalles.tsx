@@ -30,11 +30,6 @@ export default function Detalles() {
             </div>
           ))}
         </div>
-
-        <p className="t-sub mx-auto mt-8 max-w-[520px] text-center text-pretty">
-          Las clases son en directo por las tardes, hora de Madrid — si vives fuera de
-          España, comprueba antes qué hora te queda en tu zona horaria.
-        </p>
       </div>
     </section>
   );

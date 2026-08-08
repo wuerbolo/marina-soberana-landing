@@ -14,7 +14,6 @@ import Link from "next/link";
 const META = [
   "Online · 6 meses",
   "Clases en directo",
-  "Canalizas a los 15 días",
   "Acompañamiento semanal",
   "Manuales descargables",
   "Prácticas exclusivas",
@@ -56,8 +55,8 @@ export default function Hero() {
         */}
         <p className="t-lead max-w-[620px] text-pretty text-on-dark-muted">
           El máster de Registros Akáshicos + terapias emocionales de 6 meses con el que
-          te formas en una nueva profesión: sales con tu propio método de acompañamiento
-          y con clientes que notan el cambio desde la primera sesión.
+          aprendes una nueva profesión: sales con tu propio método de acompañamiento
+          y con la seguridad de garantizar cambios a tus clientes en el primer día.
         </p>
         <div className="mt-1 flex w-full flex-col items-center gap-3">
           <Link
@@ -76,11 +75,18 @@ export default function Hero() {
           call from the client, not a fidelity slip. At the reference's size these
           read as a thin grey smudge under the CTA rather than as scannable facts.
         */}
-        <div className="mt-[clamp(10px,3vw,20px)] flex flex-wrap justify-center gap-2.5">
+        {/*
+          On a phone the chips are a 2-column grid: equal-width cells in aligned
+          rows read as tidy, where a centered flex-wrap leaves a ragged last row
+          of orphans. With an odd count the final chip spans both columns so it
+          centers instead of stranding one to the left. From sm up there is room
+          for the reference's natural pill row, so it reverts to a centered wrap.
+        */}
+        <div className="mt-[clamp(10px,3vw,20px)] grid w-full max-w-[380px] grid-cols-2 gap-2.5 [&>*:last-child:nth-child(odd)]:col-span-2 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center sm:[&>*:last-child:nth-child(odd)]:col-span-1">
           {META.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-accent-soft/45 px-[18px] py-[9px] text-[15px] font-medium tracking-[0.01em] text-accent-soft"
+              className="flex items-center justify-center rounded-full border border-accent-soft/45 px-[18px] py-[9px] text-center text-[15px] font-medium tracking-[0.01em] text-accent-soft"
             >
               {item}
             </span>
@@ -93,7 +99,7 @@ export default function Hero() {
           band stays with Marina's bio where it reads as her credentials.
         */}
         <p className="text-[13.5px] font-medium tracking-[0.04em] text-on-dark-muted">
-          +60 alumnas formadas · +900 personas acompañadas · desde 2021
+          +60 alumnas formadas · +900 personas acompañadas · +2 años formando terapeutas en Registros Akáshicos
         </p>
       </div>
     </section>
