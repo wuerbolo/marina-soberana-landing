@@ -1,8 +1,8 @@
 import TestimoniosGrid, { type TestimonioScreenshot } from "./TestimoniosGrid";
 
 // The WhatsApp screenshots Marina supplied, in soberana-webv3's curation for
-// this block. They carry no names, no avatars and no phone numbers — the sender
-// line is scribbled out in the two shots that had one — so shipping the image
+// this block. They carry no names, no avatars and no phone numbers — the only
+// shot that showed a sender line is cropped below it — so shipping the image
 // itself still honours "no names, no photos". Each `quote` is the verbatim
 // transcription of what is legible in that screenshot and becomes its alt text.
 const TESTIMONIALS: readonly TestimonioScreenshot[] = [
@@ -56,12 +56,14 @@ const TESTIMONIALS: readonly TestimonioScreenshot[] = [
       "Hola Marina!!! Me cuesta poner en palabras todo lo que este curso significa para mí. Más que un curso, ha sido una experiencia transformadora. Me ha permitido confiar más en mí, desbloquear aspectos que ni siquiera sabía que estaban ahí y llevarme una herramienta para toda la vida. Saber que puedo acudir a los Registros para comprender, sanar y avanzar me aporta una gran sensación de paz y bienestar.",
   },
   {
-    // Two messages in one screenshot; the alt text transcribes both.
+    // Cropped to this one message. The original shot stacked two messages and
+    // showed both senders' names under a translucent highlighter stroke, which
+    // left their first letters readable — the crop removes the names outright.
     src: "testimonio-07.jpg",
     width: 882,
-    height: 822,
+    height: 346,
     quote:
-      "Muy potente la clase de hoy, y todas. Gracias Marina, muy acertado todo. — A mí me ha gustado mucho, porque todo esto de limpieza me encanta y hay cosas que no sabía que hemos aprendido. Gracias, Marina, muy productiva.",
+      "A mí me ha gustado mucho, porque todo esto de limpieza me encanta y hay cosas que no sabía que hemos aprendido. Gracias, Marina, muy productiva.",
   },
 ];
 
