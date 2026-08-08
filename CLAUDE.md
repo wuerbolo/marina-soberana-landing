@@ -17,7 +17,7 @@ Judge every change against these two.
 - Qualification logic lives server-side: questions from `GET /leads/questions`, and one `POST /leads` that creates the lead and returns `is_qualified` plus the `gate_to_quote` to quote back on a fail. There is no scoring-preview endpoint — this repo only renders, and never hardcodes questions, scoring or gate rules.
 - The WhatsApp deep link exists in exactly one place, `src/lib/links.ts`, rendered only on the qualifier's pass screen. Adding one anywhere else silently disables qualification — see `docs/adr/0002`.
 - Brand palette: CSS variables in `src/app/globals.css` are the single source of truth — never hardcode a color in a component. Copy tone: Spanish, empathetic, clarity above cleverness (sourced from Marina's own sales material).
-- Testimonials: text only, no names/photos, attributed "Alumna de Soberana".
+- Testimonials: the WhatsApp screenshots Marina supplied (`public/images/testimonios`), rendered by `TestimoniosGrid`. Still no names and no faces — the shots are anonymous bubbles — and every one carries its verbatim transcription as alt text, which is the condition for shipping them as images at all. Never add a screenshot whose text isn't transcribed into `alt`.
 - `NEXT_PUBLIC_API_URL` is baked at build time (compose build arg).
 
 ## Develop & deploy

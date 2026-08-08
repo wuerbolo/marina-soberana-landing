@@ -74,6 +74,13 @@ Two exceptions, confirmed with Marina after she sent a third landing mockup
   writes (Credenciales, Detalles, Hero, etc.) — that copy still avoids *grupo*,
   *cohorte* and *plazas restantes*, per the open question below.
 
+## Update 2026-08-08
+
+The fixed bottom CTA bar (Trello vWgaPDcD, from soberana-webv3) ships with the
+label **"Plazas limitadas"**. Marina asked for that wording herself, in place of
+the mockup's "Últimas 2 plazas" — so the vague-capacity exception above now has
+a second site, and the ban on numbers is unchanged.
+
 Also newly open, **not yet a green light to change authored copy**: Marina says a
 *grupo* concept may become real after all — she's considering group onboarding
 for alumnas who enrol later, shape undecided. That's the "make cohorts real"

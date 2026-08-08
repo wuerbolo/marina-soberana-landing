@@ -3,6 +3,7 @@ import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import StickyCtaBar from "@/components/StickyCtaBar";
 import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        <StickyCtaBar />
         <CookieConsent />
         {CF_BEACON_TOKEN && (
           <Script
