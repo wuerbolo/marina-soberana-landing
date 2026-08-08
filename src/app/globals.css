@@ -32,6 +32,11 @@
      copy is 300 and the display face is a fine-hairline old-style serif
      (Cormorant Garamond over Jost — see layout.tsx). Everything else here is
      a rounding error next to that.
+     [Amended 2026-08-08: the 300 is gone. It was tuned on a Mac; on Windows'
+     grayscale antialiasing it rendered as unreadable smudge (client report,
+     twice in one day). Running copy is now 400 with slightly larger caps —
+     the calm now has to come from the serif display, the palette and the
+     spacing, which survive. Benchmark the client named: acquisition.com.]
   2. Sizes are fluid, not stepped. One clamp() per role instead of a
      breakpoint jump, so a phone gets a genuinely smaller page rather than a
      squeezed desktop one. That is what the .t-* / .h-* classes below are.
@@ -216,47 +221,60 @@ body {
     color: var(--foreground);
   }
 
-  /* h3 inside a card or a phase. */
+  /*
+    h3 inside a card or an accordion summary (Enfoque, Antes de decidir). Uses
+    the sans face, not the serif: Cormorant is a hairline serif that washes out
+    at card sizes under grayscale antialiasing (reported unreadable on a Windows
+    client machine, 2026-08-08). Jost stays crisp and legible this small, and
+    600 gives the title enough weight to read as a heading.
+  */
   .h-card {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(18px, 4.4vw, 21px);
     font-weight: 600;
     line-height: 1.3;
+    letter-spacing: -0.005em;
     color: var(--foreground);
   }
 
   /* The hero's standfirst — the only paragraph allowed to run this large. */
   .t-lead {
-    font-size: clamp(15px, 3.8vw, 18px);
-    font-weight: 300;
+    font-size: clamp(15.5px, 3.8vw, 19px);
+    font-weight: 400;
     line-height: 1.62;
   }
 
   /* Running copy. */
   .t-body {
-    font-size: clamp(15px, 3.8vw, 16.5px);
-    font-weight: 300;
+    font-size: clamp(15px, 3.8vw, 17px);
+    font-weight: 400;
     line-height: 1.66;
   }
 
   /* Running copy in a list, where the tighter leading keeps items distinct. */
   .t-list {
     font-size: clamp(15px, 3.9vw, 17px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.58;
   }
 
-  /* The line under a section heading. */
+  /*
+    The line under a section heading. The one role where the reference's 300 is
+    abandoned: at ~15px in the muted colour it was reported unreadable on a
+    Windows machine (2026-08-08) — thin strokes at small sizes wash out under
+    grayscale antialiasing that macOS/mobile never shows. One weight up and one
+    ink step down; the size stays the reference's.
+  */
   .t-sub {
     font-size: clamp(14.5px, 3.6vw, 16px);
-    font-weight: 300;
-    color: var(--muted);
+    font-weight: 400;
+    color: var(--body-soft);
   }
 
   /* Copy nested inside a card — fixed, because the card is already fluid. */
   .t-note {
-    font-size: 15px;
-    font-weight: 300;
+    font-size: 15.5px;
+    font-weight: 400;
     line-height: 1.66;
   }
 
@@ -307,6 +325,51 @@ body {
 }
 
 /*
+  Starfield. A dozen fixed gold points scattered over the two night surfaces
+  (hero, closing card) — the page's subject is an archive read from the sky,
+  and these two surfaces are the sky. This is the one ornament allowed on top
+  of the "no decoration that isn't load-bearing" pass: it carries the niche's
+  meaning rather than filling space, it lives only where the night gradient
+  already is, and at these alphas it reads as depth, not glitter.
+
+  Percent positions rather than a tiling pattern so no repeat seam appears on
+  wide screens; two dot sizes so the field has near and far stars. The layer
+  breathes very slowly (8s, ±30% opacity) where motion is allowed — a static
+  sky is the fallback, and it is complete in itself.
+*/
+.starfield {
+  background-image:
+    radial-gradient(1.6px 1.6px at 11% 22%, color-mix(in srgb, var(--dorado-luz) 55%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 27% 64%, color-mix(in srgb, var(--dorado-luz) 35%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.8px 1.8px at 38% 12%, color-mix(in srgb, var(--dorado-luz) 50%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.1px 1.1px at 49% 43%, color-mix(in srgb, var(--lila-mist) 32%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 61% 18%, color-mix(in srgb, var(--dorado-luz) 45%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 70% 56%, color-mix(in srgb, var(--dorado-luz) 33%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.7px 1.7px at 82% 30%, color-mix(in srgb, var(--dorado-luz) 52%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.1px 1.1px at 90% 70%, color-mix(in srgb, var(--lila-mist) 30%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.3px 1.3px at 18% 84%, color-mix(in srgb, var(--dorado-luz) 30%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.4px 1.4px at 57% 80%, color-mix(in srgb, var(--dorado-luz) 38%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 76% 88%, color-mix(in srgb, var(--lila-mist) 28%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.6px 1.6px at 94% 10%, color-mix(in srgb, var(--dorado-luz) 44%, transparent) 0 50%, transparent 55%);
+}
+
+@keyframes starfield-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .starfield {
+    animation: starfield-breathe 8s ease-in-out infinite;
+  }
+}
+
+/*
   ── Call to action ──────────────────────────────────────────────────────
 
   One class, because the same pill is rendered in five places (hero, final,
@@ -324,6 +387,8 @@ body {
 */
 @layer components {
   .btn-cta {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -365,6 +430,44 @@ body {
   .btn-cta-block {
     display: flex;
     width: 100%;
+  }
+}
+
+/*
+  Shine sweep across the gold pill: a narrow highlight crosses the button once
+  every ~5s, so it periodically reads as catching the hero's light. Most of
+  the cycle is rest — a constant sweep would nag. Off entirely under reduced
+  motion; the pseudo-element then simply never paints anything (its resting
+  transform keeps the band outside the pill, which overflow: hidden clips).
+*/
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgb(255 252 244 / 0.38) 50%,
+    transparent 65%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+}
+
+@keyframes cta-shine {
+  0%,
+  62% {
+    transform: translateX(-150%);
+  }
+  82%,
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-cta::after {
+    animation: cta-shine 5.2s ease-in-out infinite;
   }
 }
 

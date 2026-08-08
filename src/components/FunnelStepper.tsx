@@ -70,7 +70,7 @@ export default function FunnelStepper() {
         <Progress current={step} total={questions.length + 1} />
         <p
           key={q.id}
-          className="fade-up mt-10 font-serif text-2xl font-medium leading-snug md:text-3xl"
+          className="fade-up mt-10 font-serif text-2xl font-semibold leading-snug md:text-3xl"
         >
           {q.prompt}
         </p>

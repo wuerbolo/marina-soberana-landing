@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function SiteFooter() {
   return (
     <footer className="bg-dark px-[clamp(20px,5vw,40px)] py-[clamp(34px,6vw,48px)] text-on-dark-quiet">
-      <div className="mx-auto flex max-w-[960px] flex-col items-center gap-4 text-[12.5px] font-light uppercase tracking-[0.02em] md:flex-row md:justify-between">
+      <div className="mx-auto flex max-w-[960px] flex-col items-center gap-4 text-[12.5px] uppercase tracking-[0.02em] md:flex-row md:justify-between">
         <p className="text-center md:text-left">
           © {new Date().getFullYear()} Soberana · Máster de Registros Akáshicos · Marina Romés
         </p>

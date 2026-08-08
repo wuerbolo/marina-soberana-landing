@@ -6,10 +6,15 @@ import Link from "next/link";
   three words each. The detail that got cut ("conmigo + tutora", "para crear tus
   acompañamientos") is stated in full further down the page, where there is room
   for it.
+
+  "Canalizas a los 15 días" is the FAQ's own claim ("a los 15 días ya empiezas a
+  canalizar") surfaced to the hero — the page's strongest time-to-first-result
+  fact, per the conversion audit (§4.1).
 */
 const META = [
   "Online · 6 meses",
   "Clases en directo",
+  "Canalizas a los 15 días",
   "Acompañamiento semanal",
   "Manuales descargables",
   "Prácticas exclusivas",
@@ -27,6 +32,8 @@ export default function Hero() {
         aria-hidden
         className="halo-gold pointer-events-none absolute -top-[24%] left-1/2 aspect-square w-[min(760px,150%)] -translate-x-1/2"
       />
+      {/* Faint gold stars in the night gradient — see .starfield in globals.css. */}
+      <div aria-hidden className="starfield pointer-events-none absolute inset-0" />
       {/*
         Padding lives on the section, not here: this div's only job is the
         760px measure. Padding and max-width on the same box double-count once
@@ -42,11 +49,15 @@ export default function Hero() {
           <em className="italic text-accent-soft">como un terapeuta profesional</em> — sin
           sentir que te quedas en blanco o que te lo inventas
         </h1>
+        {/*
+          One sentence, one promise (audit §4.2): the old standfirst opened with
+          "no es un curso más" (the line every competitor also opens with) and
+          ran 58 words. The verifiable specifics stay; the adjectives went.
+        */}
         <p className="t-lead max-w-[620px] text-pretty text-on-dark-muted">
-          Soberana no es un curso más de Registros Akáshicos: es el máster de Registros
-          Akáshicos + terapias emocionales de 6 meses con el que te formas en una nueva
-          profesión, con material 100% exclusivo de esta formación, para crear
-          acompañamientos con los que tus clientes vean resultados desde el día 1.
+          El máster de Registros Akáshicos + terapias emocionales de 6 meses con el que
+          te formas en una nueva profesión: sales con tu propio método de acompañamiento
+          y con clientes que notan el cambio desde la primera sesión.
         </p>
         <div className="mt-1 flex w-full flex-col items-center gap-3">
           <Link
@@ -75,6 +86,15 @@ export default function Hero() {
             </span>
           ))}
         </div>
+        {/*
+          Proof one screen-height early (audit §3.1): the headline claims
+          "como un terapeuta profesional", and the numbers that back it used to
+          sit three sections down. One quiet line closes the gap; the full stats
+          band stays with Marina's bio where it reads as her credentials.
+        */}
+        <p className="text-[13.5px] font-medium tracking-[0.04em] text-on-dark-muted">
+          +60 alumnas formadas · +900 personas acompañadas · desde 2021
+        </p>
       </div>
     </section>
   );

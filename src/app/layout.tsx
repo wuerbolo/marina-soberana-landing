@@ -41,10 +41,12 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
+// Sells the máster, not the legacy "proceso" positioning — this is what Google
+// results, WhatsApp link previews and the browser tab show before the hero can.
 export const metadata: Metadata = {
-  title: "Soberana | Proceso de evolución, sanación y manifestación",
+  title: "Soberana | Máster de Registros Akáshicos con Marina Romés",
   description:
-    "Rompe y libera miedos, lealtades familiares y heridas del alma para avanzar con claridad, confianza y merecimiento. Un acompañamiento de 6 meses con Marina Romés.",
+    "Fórmate como terapeuta de Registros Akáshicos en 6 meses: clases en directo, seguimiento individual semanal y un método ya recorrido por más de 60 alumnas.",
 };
 
 export default function RootLayout({

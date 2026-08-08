@@ -21,7 +21,7 @@ export default function Detalles() {
           {ITEMS.map((item) => (
             <div
               key={item.label}
-              className="flex min-h-[126px] flex-col items-center justify-center rounded-xl border border-panel-line bg-panel px-3.5 py-[22px] text-center transition-colors hover:border-accent/45"
+              className="flex min-h-[126px] flex-col items-center justify-center rounded-xl border border-panel-line bg-panel px-3.5 py-[22px] text-center transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-accent/45 hover:shadow-card"
             >
               <p className="t-label mb-2 text-accent-hover">{item.label}</p>
               <p className="font-serif text-[21px] font-semibold text-foreground">

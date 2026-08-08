@@ -74,9 +74,11 @@ circumstances, not a status the visitor holds or is told about.
 
 **Deflection**:
 The page's core job: reducing the number of unqualified information requests
-reaching Marina. Achieved by disclosure — duration and commitment stated plainly
-on the page, price disclosed inside the qualifier rather than in the sales copy —
-so visitors select themselves out, never by the system rejecting them.
+reaching Marina. Achieved by disclosure — duration, commitment and the
+investment floor ("Inversión desde 2.000€", on the page since 2026-08-08 per
+Marina's reference) stated plainly, with the exact price still disclosed inside
+the qualifier — so visitors select themselves out, never by the system rejecting
+them.
 _Avoid_: filtering out, disqualifying
 
 **Newsletter**:
