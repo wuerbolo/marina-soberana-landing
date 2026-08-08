@@ -27,6 +27,8 @@ export default function Hero() {
         aria-hidden
         className="halo-gold pointer-events-none absolute -top-[24%] left-1/2 aspect-square w-[min(760px,150%)] -translate-x-1/2"
       />
+      {/* Faint gold stars in the night gradient — see .starfield in globals.css. */}
+      <div aria-hidden className="starfield pointer-events-none absolute inset-0" />
       {/*
         Padding lives on the section, not here: this div's only job is the
         760px measure. Padding and max-width on the same box double-count once

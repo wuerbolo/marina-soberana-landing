@@ -38,7 +38,7 @@ export default function TestimoniosGrid({
           width={t.width}
           height={t.height}
           sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
-          className="mb-3.5 block w-full break-inside-avoid rounded-xl shadow-card"
+          className="mb-3.5 block w-full break-inside-avoid rounded-xl shadow-card transition-[box-shadow,transform] duration-200 hover:-translate-y-1 hover:shadow-card-lift"
         />
       ))}
     </div>

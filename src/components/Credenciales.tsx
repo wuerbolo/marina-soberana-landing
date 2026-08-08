@@ -1,9 +1,12 @@
+import CountUp from "./CountUp";
+
 const ITEMS = [
-  { num: "+2", label: "años formando terapeutas de Registros Akáshicos" },
-  { num: "+900", label: "personas acompañadas en terapia individual" },
-  { num: "+60", label: "alumnas ya han hecho el máster Soberana" },
+  { prefix: "+", value: 2, label: "años formando terapeutas de Registros Akáshicos" },
+  { prefix: "+", value: 900, label: "personas acompañadas en terapia individual" },
+  { prefix: "+", value: 60, label: "alumnas ya han hecho el máster Soberana" },
   {
-    num: "16",
+    prefix: "",
+    value: 16,
     label:
       "alumnas acompañadas a la vez — porque cada una recibe seguimiento individual semanal conmigo y su tutora",
   },
@@ -18,7 +21,7 @@ export default function Credenciales() {
         {ITEMS.map((item) => (
           <div key={item.label} className="reveal">
             <p className="font-serif text-[clamp(34px,8vw,42px)] font-bold leading-none text-accent-soft">
-              {item.num}
+              <CountUp value={item.value} prefix={item.prefix} />
             </p>
             <p className="mt-2 text-[12.5px] font-light leading-[1.45] text-on-dark-quiet">
               {item.label}

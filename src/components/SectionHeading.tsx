@@ -23,6 +23,15 @@ export default function SectionHeading({
 }) {
   return (
     <div className="reveal mb-[clamp(26px,5vw,42px)] text-center">
+      {/*
+        A single small star above the title — quieter than the gold rule the
+        reference pass removed, and the same glyph the page already uses as its
+        list bullet, so sections open with the page's own mark rather than a
+        generic ornament.
+      */}
+      <span aria-hidden className="mb-2.5 block text-[13px] leading-none text-accent">
+        ✦
+      </span>
       <h2 className={`h-section text-balance ${tone === "dark" ? "text-on-dark" : ""}`}>
         {title}
       </h2>

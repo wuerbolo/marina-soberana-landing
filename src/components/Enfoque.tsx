@@ -81,7 +81,7 @@ export default function Enfoque() {
           {ITEMS.map((item, i) => (
             <details
               key={item.title}
-              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-colors hover:border-accent/40"
+              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-[border-color,box-shadow] duration-200 open:border-accent/45 open:shadow-card hover:border-accent/40"
             >
               <summary className="relative flex cursor-pointer list-none items-start gap-3 py-5 pl-5 pr-[52px] marker:content-none">
                 <span className="shrink-0 pt-1 text-[13px] font-semibold tracking-[0.08em] text-accent">

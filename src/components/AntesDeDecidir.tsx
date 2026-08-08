@@ -41,7 +41,7 @@ export default function AntesDeDecidir() {
           {ITEMS.map((item) => (
             <details
               key={item.question}
-              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-colors hover:border-accent/40"
+              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-[border-color,box-shadow] duration-200 open:border-accent/45 open:shadow-card hover:border-accent/40"
             >
               <summary className="relative block cursor-pointer py-[18px] pl-5 pr-[52px] font-serif text-[clamp(17px,4.2vw,19px)] font-semibold leading-[1.32] text-foreground marker:content-none">
                 {item.question}

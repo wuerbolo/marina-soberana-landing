@@ -10,13 +10,25 @@ export default function SobreMi() {
           portrait centres itself on a phone and sits beside the text above it.
         */}
         <div className="reveal mx-auto w-full max-w-[280px] flex-[1_1_220px]">
-          <Image
-            src="/images/marina.jpg"
-            alt="Marina, maestra de Registros Akáshicos"
-            width={480}
-            height={853}
-            className="block aspect-[4/5] w-full rounded-t-lg rounded-b-[120px] object-cover object-[50%_22%] shadow-card-lift"
-          />
+          {/*
+            The arch echoed once behind the portrait: a hairline gold copy of
+            the frame, offset down-right so it peeks past the photo's edge.
+            One line of ornament that repeats the page's signature shape
+            instead of introducing a new one.
+          */}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute inset-0 translate-x-3 translate-y-3 rounded-t-lg rounded-b-[120px] border border-accent/45"
+            />
+            <Image
+              src="/images/marina.jpg"
+              alt="Marina, maestra de Registros Akáshicos"
+              width={480}
+              height={853}
+              className="relative block aspect-[4/5] w-full rounded-t-lg rounded-b-[120px] object-cover object-[50%_22%] shadow-card-lift"
+            />
+          </div>
         </div>
         <div className="reveal min-w-0 flex-[1_1_300px] text-center md:text-left">
           <h2 className="h-aside">Hola, ¡soy Marina!</h2>

@@ -307,6 +307,51 @@ body {
 }
 
 /*
+  Starfield. A dozen fixed gold points scattered over the two night surfaces
+  (hero, closing card) — the page's subject is an archive read from the sky,
+  and these two surfaces are the sky. This is the one ornament allowed on top
+  of the "no decoration that isn't load-bearing" pass: it carries the niche's
+  meaning rather than filling space, it lives only where the night gradient
+  already is, and at these alphas it reads as depth, not glitter.
+
+  Percent positions rather than a tiling pattern so no repeat seam appears on
+  wide screens; two dot sizes so the field has near and far stars. The layer
+  breathes very slowly (8s, ±30% opacity) where motion is allowed — a static
+  sky is the fallback, and it is complete in itself.
+*/
+.starfield {
+  background-image:
+    radial-gradient(1.6px 1.6px at 11% 22%, color-mix(in srgb, var(--dorado-luz) 55%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 27% 64%, color-mix(in srgb, var(--dorado-luz) 35%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.8px 1.8px at 38% 12%, color-mix(in srgb, var(--dorado-luz) 50%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.1px 1.1px at 49% 43%, color-mix(in srgb, var(--lila-mist) 32%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 61% 18%, color-mix(in srgb, var(--dorado-luz) 45%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 70% 56%, color-mix(in srgb, var(--dorado-luz) 33%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.7px 1.7px at 82% 30%, color-mix(in srgb, var(--dorado-luz) 52%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.1px 1.1px at 90% 70%, color-mix(in srgb, var(--lila-mist) 30%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.3px 1.3px at 18% 84%, color-mix(in srgb, var(--dorado-luz) 30%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.4px 1.4px at 57% 80%, color-mix(in srgb, var(--dorado-luz) 38%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.2px 1.2px at 76% 88%, color-mix(in srgb, var(--lila-mist) 28%, transparent) 0 50%, transparent 55%),
+    radial-gradient(1.6px 1.6px at 94% 10%, color-mix(in srgb, var(--dorado-luz) 44%, transparent) 0 50%, transparent 55%);
+}
+
+@keyframes starfield-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.68;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .starfield {
+    animation: starfield-breathe 8s ease-in-out infinite;
+  }
+}
+
+/*
   ── Call to action ──────────────────────────────────────────────────────
 
   One class, because the same pill is rendered in five places (hero, final,
@@ -324,6 +369,8 @@ body {
 */
 @layer components {
   .btn-cta {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -365,6 +412,44 @@ body {
   .btn-cta-block {
     display: flex;
     width: 100%;
+  }
+}
+
+/*
+  Shine sweep across the gold pill: a narrow highlight crosses the button once
+  every ~5s, so it periodically reads as catching the hero's light. Most of
+  the cycle is rest — a constant sweep would nag. Off entirely under reduced
+  motion; the pseudo-element then simply never paints anything (its resting
+  transform keeps the band outside the pill, which overflow: hidden clips).
+*/
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgb(255 252 244 / 0.38) 50%,
+    transparent 65%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+}
+
+@keyframes cta-shine {
+  0%,
+  62% {
+    transform: translateX(-150%);
+  }
+  82%,
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-cta::after {
+    animation: cta-shine 5.2s ease-in-out infinite;
   }
 }
 
