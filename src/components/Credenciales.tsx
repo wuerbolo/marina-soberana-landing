@@ -11,18 +11,20 @@ const ITEMS = [
 
 export default function Credenciales() {
   return (
-    <section className="bg-dark text-on-dark">
-      <div className="mx-auto max-w-4xl px-6 py-16">
-        <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
-          {ITEMS.map((item) => (
-            <div key={item.label}>
-              <p className="font-serif text-4xl font-semibold text-accent md:text-5xl">
-                {item.num}
-              </p>
-              <p className="mt-2 text-sm leading-snug text-on-dark-muted">{item.label}</p>
-            </div>
-          ))}
-        </div>
+    // Flat, not the hero's gradient: this is a thin band between two light
+    // sections, and a gradient at this height only reads as a smudge.
+    <section className="bg-dark px-[clamp(20px,5vw,40px)] py-[clamp(36px,7vw,56px)] text-on-dark">
+      <div className="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[clamp(22px,4vw,26px)] text-center">
+        {ITEMS.map((item) => (
+          <div key={item.label} className="reveal">
+            <p className="font-serif text-[clamp(34px,8vw,42px)] font-bold leading-none text-accent-soft">
+              {item.num}
+            </p>
+            <p className="mt-2 text-[12.5px] font-light leading-[1.45] text-on-dark-quiet">
+              {item.label}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );

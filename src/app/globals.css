@@ -11,31 +11,39 @@
   Dorado Claro    #E8D5A3
   Crema           #FAF6F0
   Source: purple/gold concept Marina provided (soberana-landing-concept-
-  from-marina/soberana-landing.html), confirmed 2026-08-04 — supersedes the
-  earlier lilac/peach palette. If this list ever disagrees with the
-  variables below, this list wins — paste the update here first if the
-  brand changes, then adjust the variables.
+  from-marina/soberana-landing.html), confirmed 2026-08-04. If this list ever
+  disagrees with the variables below, this list wins — paste the update here
+  first if the brand changes, then adjust the variables.
   Duplicated by hand in marina-soberana-frontend/src/app/globals.css too
   (no shared package between repos).
 
-  Shares the learning platform's typographic DNA (serif display + clean sans
-  body, generous whitespace) so the two feel like the same family.
+  ── REFERENCE PASS, 2026-08-08 ──────────────────────────────────────────
+  Marina then supplied a fully designed reference of this same page
+  (soberana-landing.html, kept out of the repo). It is the same palette
+  retuned: every hue is within a few percent of the official list, but
+  consistently WARMER and one notch LESS saturated. Those few percent are the
+  whole difference between the two pages on screen, so the semantic roles
+  below now carry the reference's exact values and each one says which. The
+  official list above is unchanged and still the brand of record.
 
-  How the palette maps to roles (reworked 2026-08-04, contrast-checked):
-  - 60/30/10: Crema is the page base (warm off-white), Lila Nebulosa is the
-    alternate section panel (brand, unchanged from the prior palette),
-    Dorado is reserved for CTAs and small accents.
-  - Dorado (#C8A24A) on Crema/white passes for large accent numbers but is
-    borrowed as a CTA fill, not body text — foreground text on top of it
-    still reaches 6.46:1 (AA).
-  - Muted TEXT uses --muted (#5C4A6B), a DERIVED shade between Morado and
-    Crema: 7.37:1 on Crema, 5.50:1 on Lila Nebulosa — both AA.
-  - Morado Oscuro doubles as the dark section background (testimonials):
-    Crema text on it is 14.45:1, the derived on-dark-muted lilac
-    (#F0E6F7) is 12.87:1; cards use --dark-raised (Morado, #4A2F5E),
-    where those same text colors stay 10.49:1 / 9.34:1.
-  - --surface is plain white, matching the concept's raised cards on
-    light sections; Morado Oscuro text on it is 15.56:1.
+  What the reference does that this build did not, in rough order of impact:
+
+  1. Weight, not colour, is what makes it read as calm. Nearly all running
+     copy is 300 and the display face is a fine-hairline old-style serif
+     (Cormorant Garamond over Jost — see layout.tsx). Everything else here is
+     a rounding error next to that.
+  2. Sizes are fluid, not stepped. One clamp() per role instead of a
+     breakpoint jump, so a phone gets a genuinely smaller page rather than a
+     squeezed desktop one. That is what the .t-* / .h-* classes below are.
+  3. Three surfaces and nothing else: page cream, white, deep purple —
+     alternating. The warm-cream --panel that used to back whole sections is
+     now only a card fill; the reference backs no section with it.
+  4. No decoration that isn't load-bearing. The reference carries no grain
+     overlay, no gold rule above headings, and exactly one gold halo on the
+     whole page (the hero). All three were removed here rather than kept —
+     next to 300-weight type they read as noise.
+  5. Its dark sections are FLAT #241629. The gradient is spent in two places
+     only: the hero, and the closing CTA card.
 */
 :root {
   /* Official colors, verbatim */
@@ -43,62 +51,372 @@
   --morado: #4a2f5e;
   --morado-oscuro: #2e1c3d;
   --dorado: #c8a24a;
-  --dorado-claro: #e8d5a3; /* reserved: not yet wired to a role — no current component needs a gold accent-on-dark label (the concept uses it for eyebrows/badges/credential numbers) */
+  --dorado-claro: #e8d5a3;
   --crema: #faf6f0;
 
-  /* Derived shades (documented above — keep this list short) */
-  --dorado-deep: #b3903f; /* Dorado darkened, hover */
-  --morado-ink: #5c4a6b; /* Morado → Crema, legible muted text */
-  --lila-mist: #f0e6f7; /* Light lavender, muted text on dark sections */
-  --crema-deep: #e8ddd0; /* Crema darkened, borders — from the concept's dividers */
+  /*
+    Reference-tuned shades. Every value below is lifted from Marina's
+    reference; the comment names the official colour it is a retune of.
+  */
+  --crema-calida: #f7f2ea; /* Crema, warmer — the page base */
+  --crema-carta: #fbf7f1; /* Crema lifted — card and accordion fill */
+  --crema-linea: #ebe1d3; /* Card borders */
+  --crema-regla: #e7dbcb; /* List dividers, one step darker than the card line */
+  --tinta: #2b1b38; /* Morado Oscuro, warmer — headings */
+  --tinta-cuerpo: #3d2a4d; /* Running copy on light */
+  --tinta-suave: #4a3a58; /* Secondary copy inside cards */
+  --morado-ink: #5c4a6b; /* Muted text — 7.4:1 on the page base */
+  --dorado-calido: #c89b45; /* Dorado, warmer — the CTA fill */
+  --dorado-hondo: #a8802f; /* Dorado darkened — small-caps labels on light */
+  --dorado-tinta: #8a6a2f; /* Dorado darkened further — inline links */
+  --dorado-viva: #d8ac57; /* Dorado lifted — CTA hover */
+  --dorado-luz: #e4ce9c; /* Dorado Claro, warmer — gold text on dark */
+  --dorado-humo: #ddc08a; /* Dorado Claro dimmed — uppercase labels on dark */
+  --noche: #1f1326; /* Near-black plum — top stop of the hero gradient */
+  --noche-plana: #241629; /* The flat dark surface: dark sections, footer */
+  --morado-medio: #3b2650; /* Mid stop of the hero gradient; numbered discs */
+  --morado-alto: #4a3062; /* Morado, warmer — bottom stop of the hero gradient */
+  --lila-mist: #ede3f2; /* Muted text on dark */
+  --lila-humo: #e7dcef; /* Quieter still — captions on dark */
+
+  /*
+    The three tags inside the "Mi enfoque" accordion. Fill + foreground come as
+    a pair (they are only ever legible together), and they are the one place on
+    the page where a hue other than purple/gold/cream is allowed.
+  */
+  --tag-enfoque-bg: #e3ddec;
+  --tag-enfoque-fg: #4a3062;
+  --tag-diferente-bg: #e4ede6;
+  --tag-diferente-fg: #4e7c5b;
+  --tag-no-bg: #f3e4e7;
+  --tag-no-fg: #9e5464;
 
   /* Semantic roles (components must only use these, via Tailwind tokens) */
-  --background: var(--crema);
+  --background: var(--crema-calida);
   --surface: #ffffff;
-  --panel: var(--lila-nebulosa);
-  --foreground: var(--morado-oscuro);
+  --panel: var(--crema-carta);
+  --panel-line: var(--crema-linea);
+  --foreground: var(--tinta);
+  --body: var(--tinta-cuerpo);
+  --body-soft: var(--tinta-suave);
   --muted: var(--morado-ink);
-  --soft: var(--dorado);
-  --line: var(--crema-deep);
-  --accent: var(--dorado);
-  --accent-hover: var(--dorado-deep);
-  --dark: var(--morado-oscuro);
-  --dark-raised: var(--morado);
-  --on-dark: var(--crema);
+  --line: var(--crema-regla);
+  --accent: var(--dorado-calido);
+  --accent-hover: var(--dorado-hondo);
+  --accent-link: var(--dorado-tinta);
+  --accent-bright: var(--dorado-viva);
+  --accent-soft: var(--dorado-luz);
+  --accent-dim: var(--dorado-humo);
+  --night: var(--noche);
+  --dark: var(--noche-plana);
+  --dark-mid: var(--morado-medio);
+  --dark-raised: var(--morado-alto);
+  --on-dark: var(--crema-calida);
   --on-dark-muted: var(--lila-mist);
+  --on-dark-quiet: var(--lila-humo);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-panel: var(--panel);
+  --color-panel-line: var(--panel-line);
   --color-foreground: var(--foreground);
+  --color-body: var(--body);
+  --color-body-soft: var(--body-soft);
   --color-muted: var(--muted);
-  --color-soft: var(--soft);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-link: var(--accent-link);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-dim: var(--accent-dim);
+  --color-night: var(--night);
   --color-dark: var(--dark);
+  --color-dark-mid: var(--dark-mid);
   --color-dark-raised: var(--dark-raised);
   --color-on-dark: var(--on-dark);
   --color-on-dark-muted: var(--on-dark-muted);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
-  /* Morado-tinted soft shadow for raised cards (shadow-card utility) */
-  --shadow-card: 0 10px 30px -14px rgb(46 28 61 / 0.25);
-  --shadow-cta: 0 12px 28px -10px rgb(200 162 74 / 0.55);
+  --color-on-dark-quiet: var(--on-dark-quiet);
+  --color-tag-enfoque-bg: var(--tag-enfoque-bg);
+  --color-tag-enfoque-fg: var(--tag-enfoque-fg);
+  --color-tag-diferente-bg: var(--tag-diferente-bg);
+  --color-tag-diferente-fg: var(--tag-diferente-fg);
+  --color-tag-no-bg: var(--tag-no-bg);
+  --color-tag-no-fg: var(--tag-no-fg);
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+  /* Purple-tinted shadows, at the reference's two depths. */
+  --shadow-card: 0 5px 18px rgb(58 38 80 / 0.12);
+  --shadow-card-lift: 0 14px 40px rgb(58 38 80 / 0.18);
+  /*
+    Gold glow for the CTA. POSITIVE spread on purpose: the light has to escape
+    from behind the button, and a negative spread (what this used to carry)
+    shrinks a shadow to smaller than the element casting it — no glow at all.
+  */
+  --shadow-cta: 0 10px 28px 0 rgb(200 155 69 / 0.32);
+  --shadow-cta-hover: 0 14px 34px 0 rgb(200 155 69 / 0.42);
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--body);
   font-family: var(--font-sans);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
+/*
+  ── Type scale ──────────────────────────────────────────────────────────
+
+  One class per role, each a single clamp() rather than a base size plus
+  breakpoint jumps. Two reasons to keep them here instead of spelling the
+  clamp out at every call site: the sizes are shared across a dozen
+  components and drifted apart last time they were, and the 300 weight has
+  to travel with the size — a heading class that sets the size but leaves
+  the weight behind is how this page got heavy in the first place.
+
+  In `@layer components` so a call site can still trim one with a utility.
+*/
+@layer components {
+  /* Small caps above a headline. Tracking this wide needs the extra weight. */
+  .t-eyebrow {
+    font-size: clamp(10px, 2.6vw, 12px);
+    font-weight: 500;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+  }
+
+  /* The one h1 on the page. */
+  .h-display {
+    font-family: var(--font-serif);
+    font-size: clamp(31px, 7.4vw, 54px);
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+  }
+
+  /* Every section h2. */
+  .h-section {
+    font-family: var(--font-serif);
+    font-size: clamp(27px, 6.4vw, 40px);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--foreground);
+  }
+
+  /* h2 of a section that shares its row with something else (Sobre mí). */
+  .h-aside {
+    font-family: var(--font-serif);
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 600;
+    line-height: 1.16;
+    color: var(--foreground);
+  }
+
+  /* h3 inside a card or a phase. */
+  .h-card {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 4.4vw, 21px);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--foreground);
+  }
+
+  /* The hero's standfirst — the only paragraph allowed to run this large. */
+  .t-lead {
+    font-size: clamp(15px, 3.8vw, 18px);
+    font-weight: 300;
+    line-height: 1.62;
+  }
+
+  /* Running copy. */
+  .t-body {
+    font-size: clamp(15px, 3.8vw, 16.5px);
+    font-weight: 300;
+    line-height: 1.66;
+  }
+
+  /* Running copy in a list, where the tighter leading keeps items distinct. */
+  .t-list {
+    font-size: clamp(15px, 3.9vw, 17px);
+    font-weight: 300;
+    line-height: 1.58;
+  }
+
+  /* The line under a section heading. */
+  .t-sub {
+    font-size: clamp(14.5px, 3.6vw, 16px);
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  /* Copy nested inside a card — fixed, because the card is already fluid. */
+  .t-note {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.66;
+  }
+
+  /* Small caps used as a label: table headers, card labels, tags. */
+  .t-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+}
+
+/*
+  ── Surfaces ────────────────────────────────────────────────────────────
+
+  The hero's night sky, and the closing CTA card. Three purple stops, never
+  fading to a light tone. Every other dark surface on the page is flat
+  --dark; the reference spends the gradient in these two places only.
+*/
+.bg-night-gradient {
+  background-image: linear-gradient(
+    168deg,
+    var(--noche) 0%,
+    var(--morado-medio) 55%,
+    var(--morado-alto) 100%
+  );
+}
+
+/*
+  The closing CTA card. Runs the other way from the hero — mid purple down to
+  the flat dark — so the page ends on its deepest tone rather than its lightest.
+*/
+.bg-card-gradient {
+  background-image: linear-gradient(168deg, var(--morado-medio) 0%, var(--noche-plana) 100%);
+}
+
+/*
+  Gold halo. The single light source on the whole page — a soft radial bloom
+  behind the hero headline that the CTA then appears lit by. Purely
+  decorative, so it is placed by an aria-hidden div in the component.
+*/
+.halo-gold {
+  background-image: radial-gradient(
+    circle,
+    rgb(214 178 104 / 0.2) 0%,
+    rgb(214 178 104 / 0) 68%
+  );
+}
+
+/*
+  ── Call to action ──────────────────────────────────────────────────────
+
+  One class, because the same pill is rendered in five places (hero, final,
+  sticky bar, qualifier result, funnel submit) and four of them had drifted
+  into slightly different copies of the same utility string.
+
+  Sentence case, not uppercase-with-wide-tracking: at 15-17px the uppercase
+  version was optically smaller and quieter than the plain one.
+  min-height 56px clears the 44px touch-target floor with room to spare.
+
+  In `@layer components` on purpose: Tailwind's utilities layer is ordered after
+  it, so a call site can still trim a padding or a font size with a utility
+  class. Unlayered, this rule would have quietly beaten every utility next to
+  it — unlayered CSS outranks anything in a layer.
+*/
+@layer components {
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 56px;
+    padding: 16px 30px;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: clamp(15px, 3.9vw, 17px);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    text-align: center;
+    box-shadow: var(--shadow-cta);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .btn-cta:hover {
+    background-color: var(--accent-bright);
+    box-shadow: var(--shadow-cta-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0);
+  }
+
+  .btn-cta:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    transform: none;
+  }
+
+  /* Full-bleed variant — the hero and the funnel want the pill to span. */
+  .btn-cta-block {
+    display: flex;
+    width: 100%;
+  }
+}
+
+/*
+  ── Disclosure ──────────────────────────────────────────────────────────
+
+  The accordions (Mi enfoque, Antes de decidir) mark their state with a single
+  glyph that ROTATES from + to ×-ish rather than swapping one character for
+  another: rotation is animatable, a character swap is not, and the reference
+  reads noticeably smoother for it. The glyph itself is a plain "+" in the
+  markup, so a browser without the transform still shows a sensible affordance.
+*/
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] .om-plus {
+  transform: rotate(45deg);
+}
+
+.om-plus {
+  transition: transform 0.25s ease;
+}
+
+/*
+  ── Motion ──────────────────────────────────────────────────────────────
+
+  Scroll-driven reveals with no JavaScript and no hydration cost, via
+  animation-timeline: view(). Guarded twice over: the element's resting state
+  is the VISIBLE one, and the animation only attaches where the feature and
+  the user's motion preference both allow it. A browser without support (or a
+  visitor who asked for less motion) simply sees the finished page.
+*/
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 26%;
+    }
+  }
 }
 
 @keyframes fade-up {

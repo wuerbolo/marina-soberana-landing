@@ -1,29 +1,39 @@
 import Link from "next/link";
 
+/**
+ * The closing ask.
+ *
+ * A deep purple CARD inset on the page's cream rather than a full-bleed dark
+ * band — the shape Marina's reference closes on. Two things it buys: the gold
+ * pill still has a dark surface to glow against, and the card's rounded edge
+ * keeps the section from reading as a second hero at the bottom of the page.
+ */
 export default function FinalCTA() {
   return (
-    <section>
-      <div className="mx-auto max-w-2xl px-6 py-24 text-center md:py-32">
-        <h2 className="font-serif text-3xl font-light tracking-tight md:text-4xl">
+    // id targeted by StickyCtaBar's IntersectionObserver — once this card is on
+    // screen, the fixed bar is a redundant second ask and slides away.
+    <section
+      id="final-cta"
+      className="px-[clamp(16px,5vw,40px)] pb-[clamp(56px,10vw,96px)] pt-[clamp(20px,5vw,40px)]"
+    >
+      <div className="bg-card-gradient reveal mx-auto flex max-w-[660px] flex-col items-center gap-4 rounded-[20px] px-[clamp(22px,5vw,44px)] py-[clamp(36px,7vw,56px)] text-center text-on-dark">
+        <h2 className="font-serif text-[clamp(23px,5.6vw,29px)] font-semibold leading-[1.2] text-balance">
           Tu siguiente paso
         </h2>
-        <p className="mt-5 text-base leading-relaxed text-muted">
+        <p className="t-note max-w-[520px] text-pretty text-on-dark-muted">
           Soberana se trabaja de forma cercana y personalizada, así que antes de unirte
-          hablamos en una llamada. Empieza por estas preguntas para saber si es tu
-          momento.
+          hablamos en una llamada. Empieza por estas preguntas para saber si es tu momento.
         </p>
-        <div className="mt-10">
-          <Link
-            href="/aplicar"
-            data-umami-event="cta-final-click"
-            className="inline-flex rounded-full bg-accent px-9 py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-all hover:-translate-y-0.5 hover:bg-accent-hover"
-          >
-            Quiero saber si es para mí
-          </Link>
-          <p className="mt-4 text-xs uppercase tracking-widest text-muted">
-            3 minutos · sin compromiso
-          </p>
-        </div>
+        <Link
+          href="/aplicar"
+          data-umami-event="cta-final-click"
+          className="btn-cta btn-cta-block mt-1.5 max-w-[400px]"
+        >
+          Quiero saber si es para mí
+        </Link>
+        <small className="text-[13px] font-light text-on-dark-quiet">
+          3 minutos · sin compromiso
+        </small>
       </div>
     </section>
   );

@@ -70,7 +70,7 @@ export default function FunnelStepper() {
         <Progress current={step} total={questions.length + 1} />
         <p
           key={q.id}
-          className="fade-up mt-10 font-serif text-2xl font-light leading-snug md:text-3xl"
+          className="fade-up mt-10 font-serif text-2xl font-medium leading-snug md:text-3xl"
         >
           {q.prompt}
         </p>
@@ -184,7 +184,7 @@ function ContactForm({
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-md px-6 py-20 md:py-28">
       <Progress current={totalSteps - 1} total={totalSteps} />
-      <h2 className="fade-up mt-10 font-serif text-2xl font-light leading-snug md:text-3xl">
+      <h2 className="fade-up mt-10 font-serif text-2xl font-medium leading-snug md:text-3xl">
         Un último paso: dime quién eres.
       </h2>
       <p className="mt-4 text-sm leading-relaxed text-muted">
@@ -244,7 +244,7 @@ function ContactForm({
         type="submit"
         disabled={busy}
         data-umami-event="cta-qualifier-submit"
-        className="mt-8 w-full rounded-full bg-accent py-4 text-sm font-medium uppercase tracking-widest text-foreground shadow-cta transition-colors hover:bg-accent-hover disabled:opacity-50"
+        className="btn-cta btn-cta-block mt-8"
       >
         {busy ? "Enviando…" : "Continuar"}
       </button>

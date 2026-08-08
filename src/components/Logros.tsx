@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   <>
     <strong className="font-medium text-foreground">
@@ -41,22 +43,20 @@ const ITEMS = [
 
 export default function Logros() {
   return (
-    <section>
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Esto es lo que vas a lograr
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          En 6 meses, paso a paso, con objetivos claros en cada etapa.
-        </p>
+    <section className="px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[720px]">
+        <SectionHeading
+          title="Esto es lo que vas a lograr"
+          subtitle="En 6 meses, paso a paso, con objetivos claros en cada etapa."
+        />
 
-        <ol className="mt-12 divide-y divide-line">
+        <ol className="reveal divide-y divide-line">
           {ITEMS.map((item, i) => (
-            <li key={i} className="flex gap-5 py-5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dark-raised font-serif text-lg font-semibold text-accent">
+            <li key={i} className="flex gap-4 py-5">
+              <span className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-dark-mid font-serif text-[19px] font-bold text-accent-soft">
                 {i + 1}
               </span>
-              <p className="pt-1.5 text-base leading-relaxed text-foreground/90">{item}</p>
+              <p className="t-body pt-[5px] text-pretty text-body">{item}</p>
             </li>
           ))}
         </ol>

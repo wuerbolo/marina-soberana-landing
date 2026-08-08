@@ -6,8 +6,6 @@ import FinalCTA from "@/components/FinalCTA";
 import Hero from "@/components/Hero";
 import Logros from "@/components/Logros";
 import ParaTi from "@/components/ParaTi";
-import QueIncluye from "@/components/QueIncluye";
-import Recorrido from "@/components/Recorrido";
 import SobreMi from "@/components/SobreMi";
 import TestimoniosAlumnas from "@/components/TestimoniosAlumnas";
 import TestimoniosAlumnas2 from "@/components/TestimoniosAlumnas2";
@@ -22,9 +20,7 @@ export default function Home() {
       <Logros />
       <Enfoque />
       <TestimoniosAlumnas />
-      <Recorrido />
       <Detalles />
-      <QueIncluye />
       <TestimoniosAlumnas2 />
       <AntesDeDecidir />
       <FinalCTA />

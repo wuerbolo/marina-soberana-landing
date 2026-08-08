@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   {
     question: "¿Yo voy a saber canalizar?",
@@ -28,33 +30,29 @@ const ITEMS = [
 
 export default function AntesDeDecidir() {
   return (
-    <section className="bg-surface">
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Antes de decidir
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Las dudas más frecuentes de quienes están valorando entrar.
-        </p>
+    <section className="bg-surface px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[760px]">
+        <SectionHeading
+          title="Antes de decidir"
+          subtitle="Las dudas más frecuentes de quienes están valorando entrar."
+        />
 
-        <div className="mt-12 space-y-4">
+        <div className="reveal flex flex-col gap-2.5">
           {ITEMS.map((item) => (
             <details
               key={item.question}
-              className="group rounded-2xl border border-line bg-background open:shadow-card"
+              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-colors hover:border-accent/40"
             >
-              <summary className="flex cursor-pointer list-none items-center gap-4 px-6 py-5 font-serif text-lg font-medium marker:content-none">
-                <span className="flex-1">{item.question}</span>
-                <span className="shrink-0 text-xl font-sans font-light text-accent group-open:hidden">
+              <summary className="relative block cursor-pointer py-[18px] pl-5 pr-[52px] font-serif text-[clamp(17px,4.2vw,19px)] font-semibold leading-[1.32] text-foreground marker:content-none">
+                {item.question}
+                <span
+                  aria-hidden
+                  className="om-plus absolute right-5 top-[19px] font-sans text-[22px] font-light leading-none text-accent"
+                >
                   +
                 </span>
-                <span className="hidden shrink-0 text-xl font-sans font-light text-accent group-open:inline">
-                  −
-                </span>
               </summary>
-              <div className="px-6 pb-6">
-                <p className="text-sm leading-relaxed text-muted">{item.answer}</p>
-              </div>
+              <p className="t-note px-5 pb-5 text-pretty text-body-soft">{item.answer}</p>
             </details>
           ))}
         </div>

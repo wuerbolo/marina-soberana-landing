@@ -1,3 +1,5 @@
+import SectionHeading from "./SectionHeading";
+
 const ITEMS = [
   {
     title:
@@ -45,11 +47,21 @@ const ITEMS = [
   },
 ];
 
-function Tag({ tone, children }: { tone: "panel" | "accent" | "muted"; children: string }) {
-  const bg = { panel: "bg-panel", accent: "bg-accent/20", muted: "bg-foreground/10" }[tone];
+/**
+ * The three tags that label the halves of each answer. Each one is a fill and a
+ * foreground chosen together (see globals.css) rather than a tint of the page's
+ * gold: they have to be told apart at a glance while skimming, and three
+ * strengths of the same hue cannot do that.
+ */
+function Tag({ tone, children }: { tone: "enfoque" | "diferente" | "no"; children: string }) {
+  const colors = {
+    enfoque: "bg-tag-enfoque-bg text-tag-enfoque-fg",
+    diferente: "bg-tag-diferente-bg text-tag-diferente-fg",
+    no: "bg-tag-no-bg text-tag-no-fg",
+  }[tone];
   return (
     <span
-      className={`inline-block rounded-full ${bg} px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground`}
+      className={`t-label mb-2 inline-block rounded-full px-[11px] py-1 tracking-[0.14em] ${colors}`}
     >
       {children}
     </span>
@@ -58,46 +70,43 @@ function Tag({ tone, children }: { tone: "panel" | "accent" | "muted"; children:
 
 export default function Enfoque() {
   return (
-    <section className="bg-panel">
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="text-center font-serif text-3xl font-light tracking-tight md:text-4xl">
-          Mi enfoque
-        </h2>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-muted">
-          Un método construido en +2 años formando terapeutas, con más de 60 alumnas que
-          ya lo han recorrido.
-        </p>
+    <section className="bg-surface px-[clamp(20px,5vw,40px)] py-[clamp(56px,10vw,96px)]">
+      <div className="mx-auto max-w-[760px]">
+        <SectionHeading
+          title="Mi enfoque"
+          subtitle="Un método construido en +2 años formando terapeutas, con más de 60 alumnas que ya lo han recorrido."
+        />
 
-        <div className="mt-12 space-y-4">
+        <div className="reveal flex flex-col gap-3">
           {ITEMS.map((item, i) => (
             <details
               key={item.title}
-              className="group rounded-2xl border border-line bg-surface open:shadow-card"
+              className="overflow-hidden rounded-[14px] border border-panel-line bg-panel transition-colors hover:border-accent/40"
             >
-              <summary className="flex cursor-pointer list-none items-center gap-4 px-6 py-5 font-serif text-lg font-medium marker:content-none">
-                <span className="shrink-0 text-sm font-sans font-semibold text-accent">
+              <summary className="relative flex cursor-pointer list-none items-start gap-3 py-5 pl-5 pr-[52px] marker:content-none">
+                <span className="shrink-0 pt-1 text-[13px] font-semibold tracking-[0.08em] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="flex-1">{item.title}</span>
-                <span className="shrink-0 text-xl font-sans font-light text-accent group-open:hidden">
+                <span className="h-card flex-1">{item.title}</span>
+                <span
+                  aria-hidden
+                  className="om-plus absolute right-5 top-[22px] text-[22px] font-light leading-none text-accent"
+                >
                   +
                 </span>
-                <span className="hidden shrink-0 text-xl font-sans font-light text-accent group-open:inline">
-                  −
-                </span>
               </summary>
-              <div className="space-y-4 px-6 pb-6">
+              <div className="flex flex-col gap-4 px-5 pb-[22px]">
                 <div>
-                  <Tag tone="panel">Mi enfoque</Tag>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.enfoque}</p>
+                  <Tag tone="enfoque">Mi enfoque</Tag>
+                  <p className="t-note text-pretty text-body-soft">{item.enfoque}</p>
                 </div>
                 <div>
-                  <Tag tone="accent">Qué hago diferente</Tag>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.diferente}</p>
+                  <Tag tone="diferente">Qué hago diferente</Tag>
+                  <p className="t-note text-pretty text-body-soft">{item.diferente}</p>
                 </div>
                 <div>
-                  <Tag tone="muted">Qué NO hago</Tag>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.no}</p>
+                  <Tag tone="no">Qué NO hago</Tag>
+                  <p className="t-note text-pretty text-body-soft">{item.no}</p>
                 </div>
               </div>
             </details>
