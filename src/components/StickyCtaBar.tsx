@@ -76,7 +76,7 @@ export default function StickyCtaBar() {
           </span>
           <Link
             href="/aplicar"
-            data-umami-event="cta-sticky-click"
+            data-umami-event="cta-sticky"
             className="btn-cta min-h-[50px] flex-1 px-[18px] py-3 text-[14.5px]"
           >
             Quiero saber si Soberana es para mí →

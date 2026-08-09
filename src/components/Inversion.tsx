@@ -53,7 +53,7 @@ export default function Inversion() {
 
         <Link
           href="/aplicar"
-          data-umami-event="cta-inversion-click"
+          data-umami-event="cta-inversion"
           className="btn-cta btn-cta-block max-w-[400px]"
         >
           Quiero saber si es para mí →

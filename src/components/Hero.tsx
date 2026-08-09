@@ -61,7 +61,7 @@ export default function Hero() {
         <div className="mt-1 flex w-full flex-col items-center gap-3">
           <Link
             href="/aplicar"
-            data-umami-event="cta-hero-click"
+            data-umami-event="cta-hero"
             className="btn-cta btn-cta-block max-w-[400px]"
           >
             Quiero saber si es para mí

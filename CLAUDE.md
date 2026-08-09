@@ -19,6 +19,7 @@ Judge every change against these two.
 - Brand palette: CSS variables in `src/app/globals.css` are the single source of truth — never hardcode a color in a component. Copy tone: Spanish, empathetic, clarity above cleverness (sourced from Marina's own sales material).
 - Testimonials: the WhatsApp screenshots Marina supplied (`public/images/testimonios`), rendered by `TestimoniosGrid`. Still no names and no faces — the shots are anonymous bubbles — and every one carries its verbatim transcription as alt text, which is the condition for shipping them as images at all. Never add a screenshot whose text isn't transcribed into `alt`.
 - `NEXT_PUBLIC_API_URL` is baked at build time (compose build arg).
+- Analytics: every Umami event name and the reasoning behind it lives in `docs/analytics-events.md` — read it before adding, renaming or removing one (Umami can't rename; a rename ends the old event's history). Programmatic events go through `track()` in `src/lib/analytics.ts`; clicks stay declarative `data-umami-event` attributes. The internal opt-out is a contract with `marina-soberana-frontend` — both halves change together.
 
 ## Develop & deploy
 - This repo may be iterated directly on the VPS (Claude Code + tmux): edit → `./deploy.sh` → check https://escuelasoberana.com. Low blast radius (no state here — leads live in the backend), but commit and push to GitHub as you go; that's the only backup.

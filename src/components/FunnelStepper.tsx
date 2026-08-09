@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ApiError, getQuestions, submitLead } from "@/lib/api";
+import { questionEvent, track } from "@/lib/analytics";
 import { CallScreen, GuiasScreen } from "@/components/QualifierResult";
 import type { LeadCreated, LeadQuestion } from "@/lib/types";
 
@@ -36,18 +37,30 @@ export default function FunnelStepper() {
       .then((qs) => {
         setQuestions(qs);
         setStage("questions");
+        track("qualifier-view", { questions: qs.length });
       })
-      .catch(() => setStage("load-error"));
+      // Not just a failed fetch: for this visitor the funnel is dead, and the
+      // page offers her no other way through. A spike here is an outage.
+      .catch(() => {
+        setStage("load-error");
+        track("qualifier-load-error");
+      });
   }, []);
 
   function answer(value: boolean) {
     const q = questions[step];
     setAnswers({ ...answers, [q.id]: value });
+    // Stepping back and revising re-fires this. Umami funnels count sessions
+    // reaching each step in order, so the funnel is unaffected; only the
+    // `answer` breakdown double-counts, and recording the changed answer is
+    // truer than dropping it.
+    track(questionEvent(q.id), { answer: value });
 
     if (step + 1 < questions.length) {
       setStep(step + 1);
     } else {
       setStage("contact");
+      track("qualifier-contact");
     }
   }
 
@@ -167,8 +180,19 @@ function ContactForm({
         phone: phone.trim(),
         consent,
       });
+      // Tracked here rather than on the button, because the outcome is the
+      // server's to decide and the button cannot know it. `cta-qualifier-submit`
+      // still fires on the click, so click-minus-outcome counts how many people
+      // the empty-field check below turned back.
+      track(created.is_qualified ? "qualifier-qualified" : "qualifier-not-qualified");
+      if (consent) {
+        track("newsletter-optin", { qualified: created.is_qualified });
+      }
       onSubmitted(created);
     } catch (err) {
+      track("qualifier-submit-error", {
+        status: err instanceof ApiError ? err.status : 0,
+      });
       // A 422 means the server rejected a field the browser let through — an
       // address like "nombre@gmail" passes `type="email"` but not EmailStr.
       // Saying "try again" to that sends her round an unwinnable loop.

@@ -7,7 +7,7 @@ export default function CookiesPage() {
     <main className="mx-auto max-w-3xl px-6 py-20">
       <h1 className="font-serif text-4xl font-medium tracking-tight">Política de cookies</h1>
       <p className="mt-3 text-xs uppercase tracking-widest text-muted">
-        Última actualización: julio de 2026
+        Última actualización: agosto de 2026
       </p>
 
       <div className="mt-10 space-y-8 text-sm leading-relaxed text-foreground/90">
@@ -45,6 +45,19 @@ export default function CookiesPage() {
             técnico normal de errores (sin grabación de sesión), necesario para mantener el
             servicio funcionando de forma segura y no requiere consentimiento por ser interés
             legítimo.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-foreground">
+            Exclusión interna de estadísticas (solo equipo)
+          </h2>
+          <p className="mt-2">
+            El equipo de Soberana puede marcar su propio navegador para que sus visitas no
+            cuenten en nuestras estadísticas internas. Esa marca usa una cookie técnica
+            (<code>soberana_notrack</code>) que solo se crea al pulsar el botón
+            correspondiente dentro del panel de administración. Si has llegado aquí como
+            visitante, tu navegador no la tiene ni la va a recibir.
           </p>
         </section>
 
