@@ -57,8 +57,12 @@ indicative, never quote it as his.
 - A genuinely interested visitor with one quick question has no fast way to ask
   it, and some will leave instead. The "Antes de decidir" accordion is what
   absorbs those questions, so it earns real estate rather than decorating it.
-- `2.300€` has exactly one home, in `lead_questions.py`. If it appears in the
-  landing's copy as well, they will drift.
+- ~~`2.300€` has exactly one home, in `lead_questions.py`. If it appears in the
+  landing's copy as well, they will drift.~~ Superseded 2026-08-09: the exact
+  figure is no longer named anywhere in either repo. The page states a floor
+  ("desde 2.000€") and the qualifier's gate asks against that same floor; the
+  exact price is disclosed on the call. The drift risk this bullet guarded
+  against is gone with the second copy of the number.
 - `/aplicar` stays a route rather than an inline section, so Marina can paste the
   link into Instagram and WhatsApp replies. It is the answer to "cuéntame más".
 - Adding a WhatsApp button anywhere else silently disables qualification. It will

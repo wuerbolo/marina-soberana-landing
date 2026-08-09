@@ -212,8 +212,8 @@ function ContactForm({
         Un último paso: dime quién eres.
       </h2>
       <p className="mt-4 text-sm leading-relaxed text-muted">
-        Con esto puedo darte una respuesta a tu medida y escribirte si hace falta.
-        El teléfono es obligatorio: es por donde te contesto.
+        Al dejarme tu contacto puedo revisar tu formulario para escribirte
+        personalmente.
       </p>
 
       <div className="mt-8 space-y-5">
@@ -254,10 +254,10 @@ function ContactForm({
           className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
         />
         <span className="text-sm leading-relaxed">
-          Quiero recibir las cartas de Marina por email.
+          Quiero recibir la newsletter.
           <span className="mt-1 block text-xs leading-relaxed text-muted">
-            Escribe sobre su trabajo y su forma de mirar. A veces habla de Soberana
-            y a veces no vende nada. Puedes darte de baja cuando quieras.
+            Aquí te comparto historias personales, mías y de mis alumnas,
+            aprendizajes y reflexiones.
           </span>
         </span>
       </label>

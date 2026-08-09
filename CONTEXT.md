@@ -76,9 +76,10 @@ circumstances, not a status the visitor holds or is told about.
 The page's core job: reducing the number of unqualified information requests
 reaching Marina. Achieved by disclosure — duration, commitment and the
 investment floor ("Inversión desde 2.000€", on the page since 2026-08-08 per
-Marina's reference) stated plainly, with the exact price still disclosed inside
-the qualifier — so visitors select themselves out, never by the system rejecting
-them.
+Marina's reference) stated plainly, and the qualifier's price gate asking against
+that same floor ("más de 2.000€", since 2026-08-09) — so visitors select
+themselves out, never by the system rejecting them. The exact figure now belongs
+to the call alone.
 _Avoid_: filtering out, disqualifying
 
 **Newsletter**:
