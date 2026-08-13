@@ -592,7 +592,7 @@ export default function TerminosPage() {
             independiente y opcional, para la grabación de las sesiones en directo.
           </p>
           <p className="mt-2">
-            Al marcar la casilla correspondiente, la alumna autoriza a [titular o empresa] a
+            Al marcar la casilla correspondiente, la alumna autoriza a Marina Romero Mieres a
             grabar su imagen, voz, nombre e intervenciones durante las sesiones en directo de
             Soberana.
           </p>
